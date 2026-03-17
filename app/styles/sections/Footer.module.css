@@ -1,0 +1,134 @@
+/* app/styles/components/Footer.module.css */
+.footer {
+  width: 100%;
+  background-color: #000000;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.legalDivider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contactIcon {
+  display: flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.navItemBorderTop {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navItemDefault {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navItemDefault:hover {
+  color: #ffffff;
+}
+
+.navItemBold {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.navItemBlue {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.navItemBlue:hover {
+  color: #93c5fd;
+}
+
+.navArrow {
+  opacity: 0.4;
+  margin-left: 16px;
+  transition: opacity 0.2s;
+}
+
+.navItem:hover .navArrow {
+  opacity: 0.8;
+}
+
+.blueArrow {
+  stroke: #60a5fa;
+}
+
+.whiteArrow {
+  stroke: #ffffff;
+}
+
+.socialIcon {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s;
+}
+
+.socialIcon:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+.designerLink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.designerLink:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.socialText {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
