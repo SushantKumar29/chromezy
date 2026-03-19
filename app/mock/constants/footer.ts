@@ -1,5 +1,4 @@
-// app/constants/footer.ts
-import { ICON_BASE } from "@/app/mock/constants/urls";
+import { ICON_BASE } from "@/app/mock/constants";
 
 export const FOOTER_NAV_LEFT = [
   { label: "Home", href: "#home" },

@@ -1,9 +1,8 @@
-// app/components/ContactUs.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CONTACT_CONTENT } from "@/app/mock/constants/contact";
+import { CONTACT_CONTENT } from "@/app/mock/constants";
 import ContactForm from "@/app/components/forms/ContactForm";
 import styles from "@/app/styles/sections/Contact.module.css";
 
@@ -21,7 +20,6 @@ const ContactUs = () => {
     >
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className={styles.contactContainer}>
-          {/* Background */}
           <div className={styles.leftBackground}>
             <div
               className={styles.backgroundImage}

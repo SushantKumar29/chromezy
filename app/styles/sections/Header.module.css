@@ -1,23 +1,23 @@
-/* Header.module.css - Cleaned up version */
-
 :root {
   --header-bg: #000000;
-  --header-border: rgba(255, 255, 255, 0.1);
+  --header-border: #ffffff29;
   --header-button-bg: #4380ff;
-  --header-button-hover: #5a92ff;
-  --overlay-bg: rgba(255, 255, 255, 0.1);
-  --mobile-menu-bg: rgba(0, 0, 0, 0.95);
-  --nav-bg: rgba(0, 0, 0, 0.2);
+  --header-button-hover: #1053d9;
+  --header-overlay-bg: #ffffff1a;
+  --header-mobile-menu-bg: #000000f2;
+  --header-nav-bg: #00000033;
+  --header-nav-selected-color: linear-gradient(270deg, #11deff 0%, #4380ff 100%);
+  --header-contact-button-shadow:
+    0px 22.3363px 17.869px rgba(0, 0, 0, 0.04), 0px 100px 80px rgba(0, 0, 0, 0.07);
 }
 
 .header {
   background-color: var(--header-bg);
 }
 
-/* Desktop Navigation */
 .navContainer {
-  background-color: var(--nav-bg);
-  border-radius: 999px;
+  background-color: var(--header-nav-bg);
+  border-bottom: 1px solid var(--header-border);
   padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
@@ -38,13 +38,25 @@
   color: var(--text-primary);
 }
 
-/* Contact button */
+.selectedNav {
+  position: relative;
+}
+
+.selectedNav::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--header-nav-selected-color);
+  border-radius: 2px;
+}
+
 .contactButton {
   background-color: var(--header-button-bg);
   color: var(--text-primary);
-  box-shadow:
-    0px 22.3363px 17.869px rgba(0, 0, 0, 0.04),
-    0px 100px 80px rgba(0, 0, 0, 0.07);
+  box-shadow: var(--header-contact-button-shadow);
   transition: background-color 0.2s;
   border-radius: 999px;
   padding: 0.5rem 1rem;
@@ -58,10 +70,9 @@
   background-color: var(--header-button-hover);
 }
 
-/* Mobile menu button */
 .menuButton {
   border: 1px solid var(--header-border);
-  background-color: var(--nav-bg);
+  background-color: var(--header-nav-bg);
   transition: background-color 0.2s;
   border-radius: 0.5rem;
   width: 2.5rem;
@@ -72,12 +83,11 @@
 }
 
 .menuButton:hover {
-  background-color: var(--overlay-bg);
+  background-color: var(--header-overlay-bg);
 }
 
-/* Mobile menu */
 .mobileMenu {
-  background-color: var(--mobile-menu-bg);
+  background-color: var(--header-mobile-menu-bg);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--header-border);
   max-height: 0;
@@ -106,24 +116,26 @@
 }
 
 .mobileNavLink:hover {
-  background-color: var(--overlay-bg);
+  background-color: var(--header-overlay-bg);
   color: var(--text-primary);
 }
 
-/* Logo */
 .logo {
   opacity: 0.9;
 }
 
-/* Responsive breakpoints */
-@media (max-width: 1023px) {
+@media (max-width: 1440px) {
   .desktopOnly {
     display: none !important;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .mobileOnly {
+    display: none !important;
+  }
+
+  .mobileMenuOpen {
     display: none !important;
   }
 

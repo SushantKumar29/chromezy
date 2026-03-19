@@ -1,13 +1,12 @@
-// app/components/Products.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { IMAGE_BASE } from "@/app/mock/constants/urls";
-import { PRODUCTS_CONTENT } from "@/app/mock/constants/products";
+import { IMAGE_BASE } from "@/app/mock/constants";
+import { PRODUCTS_CONTENT } from "@/app/mock/constants";
 import ProductCard from "../cards/ProductCard";
 import styles from "@/app/styles/sections/Products.module.css";
-import { ServiceCardProps } from "@/app/types/products";
+import { ServiceCardProps } from "@/app/types";
 
 const Products = () => {
   const { title, description, cards } = PRODUCTS_CONTENT;
@@ -21,7 +20,6 @@ const Products = () => {
       transition={{ duration: 0.9 }}
       className={`relative px-4 py-12 md:py-20 ${styles.section}`}
     >
-      {/* Background Ball */}
       <motion.div className={styles.bgBall}>
         <div className="relative w-full h-full">
           <Image
@@ -39,16 +37,19 @@ const Products = () => {
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.description}>{description}</p>
         </div>
+      </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto w-full xl:w-8/10 mt-16 overflow-x-auto pb-6 hide-scrollbar">
+        <div className="flex gap-4">
           {cards.map((card) => (
-            <ProductCard
-              key={card.title}
-              title={card.title}
-              description={card.description}
-              cta={card.cta}
-              tone={card.tone as ServiceCardProps["tone"]}
-            />
+            <div key={card.title} className="flex-1 min-w-80">
+              <ProductCard
+                title={card.title}
+                description={card.description}
+                cta={card.cta}
+                tone={card.tone as ServiceCardProps["tone"]}
+              />
+            </div>
           ))}
         </div>
       </div>

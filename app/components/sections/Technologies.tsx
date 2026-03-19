@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TECHNOLOGIES_CONTENT } from "@/app/mock/constants/technologies";
+import { TECHNOLOGIES_CONTENT } from "@/app/mock/constants";
 import TechTag from "@/app/components/cards/TechTag";
 import styles from "@/app/styles/sections/Technologies.module.css";
 
@@ -22,7 +22,7 @@ const Technologies = () => {
         <div className="relative w-full h-full">
           <Image
             src={images.strippedBall}
-            alt=""
+            alt="Stripped Ball"
             height={800}
             width={400}
             className={`${styles.bgBallImage}`}
@@ -31,7 +31,7 @@ const Technologies = () => {
       </div>
 
       <div className="mx-auto w-full max-w-full sm:max-w-8/10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[480px_1fr] gap-8 md:gap-12 lg:gap-30 items-center justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-[480px_1fr] gap-8 md:gap-12 lg:gap-30 justify-between">
           <div className={styles.leftCard}>
             <h2 className={styles.leftCardTitle}>
               {title.line1}
@@ -48,9 +48,9 @@ const Technologies = () => {
             <div className={styles.leftCardImage}>
               <Image
                 src={images.threeDRender}
-                alt="3D render"
-                width={1024}
-                height={600}
+                alt="Spiral"
+                width={400}
+                height={400}
                 className="h-full w-full object-contain"
               />
             </div>

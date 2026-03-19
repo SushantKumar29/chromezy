@@ -1,9 +1,5 @@
-// app/shared/ui/icons.tsx
+import { IconProps } from "@/app/types";
 import React from "react";
-
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-  className?: string;
-}
 
 export const MenuIcon: React.FC<IconProps> = ({ className, ...props }) => (
   <svg

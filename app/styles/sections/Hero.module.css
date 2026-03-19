@@ -1,25 +1,21 @@
-/* app/styles/components/Hero.module.css */
 :root {
   --hero-bg-flower-opacity: 0.6;
-  --hero-badge-bg: rgba(255, 255, 255, 0.05);
-  --hero-badge-border: rgba(255, 255, 255, 0.1);
+  --hero-badge-bg: #ffffff0d;
+  --hero-badge-border: #ffffff1a;
   --hero-title-gradient-start: #11deff;
   --hero-title-gradient-end: #4380ff;
   --hero-subtitle-color: #cde8d7;
   --hero-stat-value-gradient: linear-gradient(to right, #3c6bfe, #9d84f2);
-  --hero-stat-bg: rgba(255, 255, 255, 0.03);
-  --hero-stat-border: rgba(255, 255, 255, 0.05);
+  --hero-stat-bg: #ffffff08;
+  --hero-stat-border: #ffffff0d;
 }
 
-/* Complex styles only - no layout/positioning */
 .bgFlower {
   opacity: var(--hero-bg-flower-opacity);
   filter: blur(50px);
 }
 
 .badge {
-  background-color: var(--hero-badge-bg);
-  border: 1px solid var(--hero-badge-border);
   backdrop-filter: blur(10px);
 }
 
@@ -55,7 +51,6 @@
   color: var(--hero-stat-label-color, rgba(255, 255, 255, 0.85));
 }
 
-/* Mobile-specific complex styles */
 @media (max-width: 768px) {
   .bgFlower {
     display: none;

@@ -1,0 +1,41 @@
+import { MetadataRoute } from "next";
+
+/*
+  This is the sitemap.ts file which helps to:
+  - Creates /sitemap.xml listing all our important URLs
+  - Helps search engines discover pages they might miss
+  - Shows when pages were last updated
+  - Indicates page priority
+*/
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl =
+    process.env.NODE_ENV === "production" ? "https://chromezy.com" : "http://localhost:3000";
+
+  return [
+    {
+      url: siteUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${siteUrl}/#about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/#products`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/#contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+}

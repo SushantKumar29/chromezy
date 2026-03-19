@@ -1,4 +1,3 @@
-// app/mock/constants/hero.ts
 export const HERO_CONTENT = {
   badge: {
     icon: "mdi-magic.svg",

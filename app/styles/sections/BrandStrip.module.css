@@ -1,6 +1,5 @@
-/* app/styles/components/BrandStrip.module.css */
 :root {
-  --brand-border-color: rgba(255, 255, 255, 0.1);
+  --brand-border-color: #ffffff1a;
 }
 
 .divider {
@@ -9,26 +8,23 @@
   background-color: var(--brand-border-color);
 }
 
-/* Scrollbar hide styles - complex browser-specific rules */
 .scrollContainer {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollContainer::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
-/* Image container */
 .imageContainer {
   position: relative;
-  height: 3rem; /* 12 * 0.25rem = 3rem */
+  height: 3rem;
   width: auto;
   aspect-ratio: 3/1;
   flex-shrink: 0;
 }
 
-/* Optional hover effect if needed later */
 .imageContainer:hover {
   opacity: 0.9;
   transition: opacity 0.2s ease;

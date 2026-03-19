@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "@/app/styles/sections/Technologies.module.css";
-import { Tag } from "@/app/types/technologies";
+import { Tag } from "@/app/types";
 
 const TechTag = ({ label, icon }: Tag) => {
   return (

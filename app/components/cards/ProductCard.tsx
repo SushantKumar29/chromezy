@@ -1,11 +1,10 @@
-// app/components/cards/ProductCard.tsx
-import { ServiceCardProps } from "@/app/types/products";
+import { ServiceCardProps } from "@/app/types";
 import Image from "next/image";
 import { PRODUCT_CARD_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/cards/ProductCard.module.css";
+import { NavLink } from "@/app/shared/ui/NavLink";
 
 const ProductCard = ({ title, description, cta, tone }: ServiceCardProps) => {
-  // Map tone to background class
   const bgClass = {
     mvp: styles.bgMvp,
     saas: styles.bgSaas,
@@ -17,33 +16,29 @@ const ProductCard = ({ title, description, cta, tone }: ServiceCardProps) => {
 
   return (
     <div className={`${styles.card} ${bgClass}`}>
-      {/* Badge */}
       <div className={styles.badge}>{PRODUCT_CARD_CONTENT.badge}</div>
 
-      {/* Decorative Image */}
       <div className={styles.decorativeImage}>
-        <Image src={decorativeImage} alt="" width={180} height={180} priority={false} />
+        <Image src={decorativeImage} alt={tone} width={180} height={180} />
       </div>
 
-      {/* Content */}
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
       </div>
 
-      {/* CTA Button */}
-      <a href="#contact" className={styles.ctaButton}>
+      <NavLink href="#contact" className={styles.ctaButton}>
         {cta}
         <span className={styles.ctaIconWrapper}>
           <Image
             src={PRODUCT_CARD_CONTENT.ctaIcon}
-            alt=""
+            alt="Contact"
             width={200}
             height={200}
             className={styles.ctaIcon}
           />
         </span>
-      </a>
+      </NavLink>
     </div>
   );
 };

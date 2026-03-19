@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import StoryCard from "../cards/StoryCard";
-import { STORIES_CONTENT } from "@/app/mock/constants/stories";
+import { STORIES_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Stories.module.css";
 
 const Stories = () => {

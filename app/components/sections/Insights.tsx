@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { INSIGHTS_CONTENT } from "@/app/mock/constants/insights";
+import { INSIGHTS_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Insights.module.css";
 import InsightCard from "../cards/InsightCard";
 

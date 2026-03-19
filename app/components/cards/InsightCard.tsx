@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "@/app/styles/sections/Insights.module.css";
-import { INSIGHTS_CONTENT } from "@/app/mock/constants/insights";
+import { INSIGHTS_CONTENT } from "@/app/mock/constants";
 
 const InsightCard = ({
   insight,
@@ -18,7 +18,12 @@ const InsightCard = ({
         <div className={styles.header}>
           <h3 className={styles.cardTitle}>{insight.title}</h3>
 
-          <button name="Read more" className={styles.arrowButton} aria-label="Read more">
+          <button
+            id="readMore"
+            name="Read more"
+            className={styles.arrowButton}
+            aria-label="readMore"
+          >
             <Image src={linkIcon} alt="Arrow Icon" width={35} height={35} />
           </button>
         </div>

@@ -1,7 +1,6 @@
-/* app/styles/components/Products.module.css */
 :root {
   --products-title-color: #ffffff;
-  --products-description-color: rgba(255, 255, 255, 0.7);
+  --products-description-color: #ffffffb3;
 }
 
 .section {
@@ -12,7 +11,6 @@
   padding-bottom: 3rem;
 }
 
-/* Background ball styles */
 .bgBall {
   position: absolute;
   right: 10%;
@@ -30,7 +28,6 @@
   filter: blur(5px);
 }
 
-/* Title styles */
 .title {
   font-size: 48px;
   font-weight: 600;
@@ -39,7 +36,6 @@
   color: var(--products-title-color);
 }
 
-/* Description styles */
 .description {
   margin-top: 1.25rem;
   font-size: 18px;
@@ -47,7 +43,6 @@
   color: var(--products-description-color);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .section {
     padding-top: 2rem;

@@ -1,8 +1,7 @@
-// app/components/cards/ClientCard.tsx
 import Image from "next/image";
-import { CLIENTS_CONTENT } from "@/app/mock/constants/clients";
+import { CLIENTS_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Clients.module.css";
-import { ClientCardProps } from "@/app/types/clients";
+import { ClientCardProps } from "@/app/types";
 
 const ClientCard = ({ client }: ClientCardProps) => {
   const cardClass = client.selected

@@ -1,33 +1,52 @@
-/* app/styles/components/Footer.module.css */
+:root {
+  --footer-bg: #000000;
+  --footer-divider: #ffffff1a;
+  --footer-nav-border: #ffffff1a;
+  --footer-description: #ffffff8c;
+  --footer-legal-link: #ffffff80;
+  --footer-legal-divider: #ffffff4d;
+  --footer-nav-default: #ffffffb3;
+  --footer-social-icon: #ffffff99;
+  --footer-copyright: #ffffff73;
+  --footer-social-text: #ffffff73;
+  --footer-white: #ffffff;
+  --footer-legal-link-hover: #ffffffcc;
+  --footer-nav-blue: #60a5fa;
+  --footer-nav-blue-hover: #93c5fd;
+  --footer-social-border-hover: #ffffff66;
+  --footer-nav-arrow: #ffffff66;
+  --footer-nav-arrow-hover: #ffffffcc;
+}
+
 .footer {
   width: 100%;
-  background-color: #000000;
+  background-color: var(--footer-bg);
 }
 
 .divider {
   height: 1px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--footer-divider);
 }
 
 .description {
   font-size: 13px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--footer-description);
 }
 
 .legalLink {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--footer-legal-link);
   font-size: 13px;
   transition: color 0.2s;
 }
 
 .legalLink:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--footer-legal-link-hover);
 }
 
 .legalDivider {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--footer-legal-divider);
 }
 
 .contactIcon {
@@ -41,7 +60,7 @@
 .contactText {
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--footer-white);
 }
 
 .navItem {
@@ -49,53 +68,47 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--footer-nav-border);
   font-size: 15px;
   transition: color 0.2s;
 }
 
 .navItemBorderTop {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--footer-nav-border);
 }
 
 .navItemDefault {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--footer-nav-default);
 }
 
 .navItemDefault:hover {
-  color: #ffffff;
+  color: var(--footer-white);
 }
 
 .navItemBold {
-  color: #ffffff;
+  color: var(--footer-white);
   font-weight: 700;
 }
 
 .navItemBlue {
-  color: #60a5fa;
+  color: var(--footer-nav-blue);
   font-weight: 600;
 }
 
 .navItemBlue:hover {
-  color: #93c5fd;
+  color: var(--footer-nav-blue-hover);
 }
 
-.navArrow {
-  opacity: 0.4;
-  margin-left: 16px;
-  transition: opacity 0.2s;
-}
-
-.navItem:hover .navArrow {
-  opacity: 0.8;
+.navItem:hover {
+  opacity: var(--footer-nav-arrow-hover);
 }
 
 .blueArrow {
-  stroke: #60a5fa;
+  stroke: var(--footer-nav-blue);
 }
 
 .whiteArrow {
-  stroke: #ffffff;
+  stroke: var(--footer-white);
 }
 
 .socialIcon {
@@ -104,17 +117,17 @@
   width: 36px;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--footer-social-icon);
   transition: all 0.2s;
 }
 
 .socialIcon:hover {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--footer-white);
+  border-color: var(--footer-social-border-hover);
 }
 
 .copyright {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--footer-copyright);
   font-size: 13px;
 }
 
@@ -122,13 +135,14 @@
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s;
+  color: inherit;
 }
 
 .designerLink:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--footer-legal-link-hover);
 }
 
 .socialText {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--footer-social-text);
   font-size: 13px;
 }

@@ -1,14 +1,14 @@
 :root {
   --stories-title-color: #ffffff;
-  --stories-description-color: rgba(255, 255, 255, 0.6);
-  --stories-card-bg: rgba(255, 255, 255, 0.05);
-  --stories-card-border: rgba(255, 255, 255, 0.1);
-  --stories-badge-bg: rgba(255, 255, 255, 0.9);
+  --stories-description-color: #ffffff99;
+  --stories-card-bg: #ffffff0d;
+  --stories-card-border: #ffffff1a;
+  --stories-badge-bg: #ffffffe6;
   --stories-badge-text: #1f2937;
-  --stories-button-bg: rgba(0, 0, 0, 0.4);
-  --stories-button-border: rgba(255, 255, 255, 0.2);
-  --stories-button-hover-bg: rgba(0, 0, 0, 0.6);
-  --overlay-bg: rgba(0, 0, 0, 0.15);
+  --stories-button-bg: #00000066;
+  --stories-button-border: #ffffff33;
+  --stories-button-hover-bg: #00000099;
+  --overlay-bg: #00000026;
   --stories-card-title-color: #111827;
   --stories-card-subtitle-color: #6b7280;
 }

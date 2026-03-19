@@ -8,7 +8,6 @@
   --insights-button-bg: #ffffff1a;
   --insights-button-border: #ffffff1a;
   --insights-button-hover-bg: #ffffff33;
-  --insights-button-color: #ffffff;
 }
 
 .section {
@@ -107,7 +106,7 @@
   justify-content: center;
   border-radius: 9999px;
   border: 1px solid var(--insights-button-border);
-  color: var(--insights-button-color);
+  color: var(--insights-title-color);
   transition: background-color 0.2s ease;
 }
 

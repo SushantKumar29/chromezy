@@ -1,7 +1,7 @@
-// app/components/Footer.tsx
 import Image from "next/image";
-import { FOOTER_NAV_LEFT, FOOTER_NAV_RIGHT, FOOTER_CONTENT } from "@/app/mock/constants/footer";
+import { FOOTER_NAV_LEFT, FOOTER_NAV_RIGHT, FOOTER_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Footer.module.css";
+import { NavLink } from "@/app/shared/ui/NavLink";
 
 const Footer = () => {
   return (
@@ -25,13 +25,13 @@ const Footer = () => {
             <p className={`${styles.description} mb-5 pl-12`}>{FOOTER_CONTENT.description}</p>
 
             <div className="flex items-center gap-2 mb-6 pl-12">
-              <a href={FOOTER_CONTENT.links.terms} className={styles.legalLink}>
+              <NavLink href={FOOTER_CONTENT.links.terms} className={styles.legalLink}>
                 Terms
-              </a>
+              </NavLink>
               <span className={styles.legalDivider}>|</span>
-              <a href={FOOTER_CONTENT.links.privacy} className={styles.legalLink}>
+              <NavLink href={FOOTER_CONTENT.links.privacy} className={styles.legalLink}>
                 Privacy
-              </a>
+              </NavLink>
             </div>
 
             <div className="flex items-center gap-3 mb-3">
@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="flex gap-16 lg:gap-24">
             <div className="flex flex-col gap-0 min-w-40">
               {FOOTER_NAV_LEFT.map((item, i) => (
-                <a
+                <NavLink
                   key={item.label}
                   href={item.href}
                   className={`
@@ -74,13 +74,13 @@ const Footer = () => {
                   `}
                 >
                   <span>{item.label}</span>
-                </a>
+                </NavLink>
               ))}
             </div>
 
             <div className="flex flex-col gap-0 min-w-40">
               {FOOTER_NAV_RIGHT.map((item, i) => (
-                <a
+                <NavLink
                   key={item.label}
                   href={item.href}
                   className={`
@@ -90,7 +90,7 @@ const Footer = () => {
                   `}
                 >
                   <span>{item.label}</span>
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -106,15 +106,15 @@ const Footer = () => {
             <span className={styles.legalDivider}>|</span>
             <span>{FOOTER_CONTENT.copyright.company}</span>
             <span className={styles.legalDivider}>|</span>
-            <a href={FOOTER_CONTENT.links.designedBy} className={styles.designerLink}>
+            <NavLink href={FOOTER_CONTENT.links.designedBy} className={styles.designerLink}>
               Designed by {FOOTER_CONTENT.copyright.designer}
-            </a>
+            </NavLink>
           </div>
 
           <div className="flex items-center gap-2">
             <span className={styles.socialText}>Connect with us:</span>
 
-            <a href={FOOTER_CONTENT.social.facebook} className={styles.socialIcon}>
+            <NavLink href={FOOTER_CONTENT.social.facebook} className={styles.socialIcon}>
               <Image
                 src={FOOTER_CONTENT.social.facebookIcon}
                 alt="Phone icon"
@@ -122,9 +122,9 @@ const Footer = () => {
                 height={24}
                 priority
               />
-            </a>
+            </NavLink>
 
-            <a href={FOOTER_CONTENT.social.instagram} className={styles.socialIcon}>
+            <NavLink href={FOOTER_CONTENT.social.instagram} className={styles.socialIcon}>
               <Image
                 src={FOOTER_CONTENT.social.instagramIcon}
                 alt="Phone icon"
@@ -132,9 +132,9 @@ const Footer = () => {
                 height={24}
                 priority
               />
-            </a>
+            </NavLink>
 
-            <a href={FOOTER_CONTENT.social.linkedin} className={styles.socialIcon}>
+            <NavLink href={FOOTER_CONTENT.social.linkedin} className={styles.socialIcon}>
               <Image
                 src={FOOTER_CONTENT.social.linkedinIcon}
                 alt="Phone icon"
@@ -142,7 +142,7 @@ const Footer = () => {
                 height={24}
                 priority
               />
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

@@ -1,35 +1,31 @@
-// app/components/Header.tsx
 "use client";
 
 import Image from "next/image";
 import { useState } from "react";
 import styles from "@/app/styles/sections/Header.module.css";
-import { NAV_ITEMS, ABOUT_ITEM } from "@/app/mock/constants";
-import { Button } from "@/app/shared/ui/Button";
 import { MenuIcon, CloseIcon } from "@/app/shared/ui/Icons";
-import { ICON_BASE } from "@/app/mock/constants/urls";
-import { NavLink } from "../../shared/ui/NavLink";
+import { ICON_BASE } from "@/app/mock/constants";
+import NavLinks, { AboutUsLink } from "../links/NavLinks";
+import { NavLink } from "@/app/shared/ui/NavLink";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // This state is used to toggle the mobile menu
 
+  // This function is used to toggle the mobile menu by clicking the menu button
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
+  // THis function is used to close the mobile menu when we click on the menu links
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Combine nav items for mobile menu
-  const allNavItems = [...NAV_ITEMS, ABOUT_ITEM];
-
   return (
     <>
       <header className={`fixed inset-x-0 top-0 z-50 ${styles.header}`}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
+        <div className="mx-auto max-w-8/10 sm:px-6 lg:px-6">
           <div className="flex h-16 items-center justify-between">
-            {/* Logo Section */}
             <div className="flex items-center gap-2 sm:gap-4">
               <Image
                 src={`${ICON_BASE}/logo-final.svg`}
@@ -37,42 +33,33 @@ const Header = () => {
                 className={styles.logo}
                 width={120}
                 height={24}
-                priority
               />
 
-              <Button name="Search" variant="ghost" href="#" className="flex items-start gap-2">
-                <Image src={`${ICON_BASE}/search.svg`} alt="Search Icon" width={16} height={16} />
-                <span className="hidden sm:inline text-faded">Search</span>
-              </Button>
+              <div className="flex items-center gap-2">
+                <Image src={`${ICON_BASE}/search.svg`} alt="Search Icon" width={18} height={18} />
+                <span className="hidden sm:inline text-faded text-sm">Search</span>
+              </div>
             </div>
 
-            {/* Desktop Navigation */}
             <div className={styles.desktopOnly}>
               <nav className={styles.navContainer}>
-                {NAV_ITEMS.map((item) => (
-                  <a key={item.label} href={item.href} className={styles.navLink}>
-                    {item.label}
-                  </a>
-                ))}
-                <NavLink href={ABOUT_ITEM.href} className={styles.navLink}>
-                  {ABOUT_ITEM.label}
-                </NavLink>
+                <NavLinks variant="desktop" />
               </nav>
             </div>
 
-            {/* Right Section */}
             <div className="flex items-center gap-4">
-              <a href="#contact" className={styles.contactButton}>
+              <AboutUsLink />
+              <NavLink href="#contact" className={styles.contactButton}>
                 <span className="sm:hidden">Contact</span>
                 <span className="hidden sm:inline">Contact Us</span>
-              </a>
+              </NavLink>
 
-              {/* Mobile Menu Button */}
               <button
+                id="toggleMenu"
                 name="Toggle Menu"
                 onClick={toggleMobileMenu}
                 className={`${styles.menuButton} ${styles.mobileOnly}`}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={isMobileMenuOpen ? "closeMenu" : "openMenu"}
                 type="button"
               >
                 {isMobileMenuOpen ? (
@@ -85,26 +72,15 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ""}`}>
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
             <nav className="flex flex-col space-y-2">
-              {allNavItems.map((item) => (
-                <NavLink
-                  key={item.label}
-                  href={item.href}
-                  className={styles.mobileNavLink}
-                  onClick={closeMobileMenu}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
+              <NavLinks variant="mobile" onItemClick={closeMobileMenu} />
             </nav>
           </div>
         </div>
       </header>
 
-      {/* Spacer */}
       <div className="h-16" />
     </>
   );
