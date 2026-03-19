@@ -1,22 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { CONTACT_CONTENT } from "@/app/mock/constants";
 import ContactForm from "@/app/components/forms/ContactForm";
 import styles from "@/app/styles/sections/Contact.module.css";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const ContactUs = () => {
   const { title, description, contactInfo, images } = CONTACT_CONTENT;
 
   return (
-    <motion.section
+    <MotionWrapper
+      as="section"
       id="contact"
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
       className="w-full px-4 py-12 md:py-20"
+      motionProps={{
+        initial: { opacity: 0, y: 22 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.15 },
+        transition: { duration: 0.8, ease: "easeOut" },
+      }}
     >
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className={styles.contactContainer}>
@@ -34,8 +37,8 @@ const ContactUs = () => {
                 src={images.logo}
                 alt="Contact character"
                 fill
-                className="object-contain object-bottom"
                 sizes="280px"
+                className="object-contain object-bottom"
               />
             </div>
 
@@ -68,7 +71,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </MotionWrapper>
   );
 };
 

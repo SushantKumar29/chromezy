@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ICON_BASE, IMAGE_BASE } from "@/app/mock/constants";
 import { HERO_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Hero.module.css";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Hero = () => {
   const { badge, title, subtitle, description, stats } = HERO_CONTENT;
@@ -22,11 +22,14 @@ const Hero = () => {
           />
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        <MotionWrapper
+          as="div"
           className="mx-auto max-w-200 text-center"
+          motionProps={{
+            initial: { opacity: 0, y: 18 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.8, ease: "easeOut" },
+          }}
         >
           <div className={`inline-flex items-center gap-2 px-4 py-2.5 ${styles.badge}`}>
             <Image
@@ -65,7 +68,7 @@ const Hero = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </MotionWrapper>
       </div>
     </div>
   );

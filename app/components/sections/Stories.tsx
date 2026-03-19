@@ -1,21 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
 import StoryCard from "../cards/StoryCard";
 import { STORIES_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Stories.module.css";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Stories = () => {
   const { title, description, cards } = STORIES_CONTENT;
 
   return (
-    <motion.section
+    <MotionWrapper
+      as="section"
       id="stories"
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
       className={`w-full px-4 py-12 md:py-20 ${styles.section}`}
+      motionProps={{
+        initial: { opacity: 0, y: 22 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.8, ease: "easeOut" },
+      }}
     >
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
@@ -37,7 +40,7 @@ const Stories = () => {
           ))}
         </div>
       </div>
-    </motion.section>
+    </MotionWrapper>
   );
 };
 

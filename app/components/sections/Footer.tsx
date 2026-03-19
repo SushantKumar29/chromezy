@@ -17,8 +17,6 @@ const Footer = () => {
                 alt={FOOTER_CONTENT.logo.alt}
                 width={FOOTER_CONTENT.logo.width}
                 height={FOOTER_CONTENT.logo.height}
-                className="h-10 w-auto"
-                priority
               />
             </div>
 
@@ -41,7 +39,6 @@ const Footer = () => {
                   alt="Phone icon"
                   width={14}
                   height={14}
-                  priority
                 />
               </div>
               <span className={styles.contactText}>{FOOTER_CONTENT.contact.phone}</span>
@@ -54,7 +51,6 @@ const Footer = () => {
                   alt="Email icon"
                   width={14}
                   height={14}
-                  priority
                 />
               </div>
               <span className={styles.contactText}>{FOOTER_CONTENT.contact.email}</span>
@@ -120,7 +116,6 @@ const Footer = () => {
                 alt="Phone icon"
                 width={24}
                 height={24}
-                priority
               />
             </NavLink>
 
@@ -130,7 +125,6 @@ const Footer = () => {
                 alt="Phone icon"
                 width={24}
                 height={24}
-                priority
               />
             </NavLink>
 
@@ -140,7 +134,6 @@ const Footer = () => {
                 alt="Phone icon"
                 width={24}
                 height={24}
-                priority
               />
             </NavLink>
           </div>

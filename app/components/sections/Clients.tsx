@@ -1,38 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@/app/shared/ui/Icons";
 import { useRef, useEffect } from "react";
 import { CLIENTS_CONTENT } from "@/app/mock/constants";
 import ClientCard from "@/app/components/cards/ClientCard";
 import styles from "@/app/styles/sections/Clients.module.css";
 import { getScrollPosition, scrollCard } from "@/app/utils/cardUtils";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Clients = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { title, subtitle, clients } = CLIENTS_CONTENT;
 
-  // Find the index of the selected card
   const selectedIndex = clients.findIndex((client) => client.selected);
 
-  // This hook is used to scroll to selected card when the section gets loaded
   useEffect(() => {
     if (selectedIndex === -1) return;
 
-    const scrollPosition = getScrollPosition(scrollRef, selectedIndex); // Here we are getting the position to which we want to scroll to
+    const scrollPosition = getScrollPosition(scrollRef, selectedIndex);
     if (scrollRef.current) {
-      scrollRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" }); // Here we are scrolling to the position smoothly
+      scrollRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
     }
   }, [selectedIndex]);
 
   return (
-    <motion.section
+    <MotionWrapper
+      as="section"
       id="clients"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9 }}
       className={`relative px-4 py-12 md:py-20 ${styles.section}`}
+      motionProps={{
+        initial: { opacity: 0, y: 40 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.9 },
+      }}
     >
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className="flex items-end justify-between mb-10 md:mb-16">
@@ -71,7 +72,7 @@ const Clients = () => {
           ))}
         </div>
       </div>
-    </motion.section>
+    </MotionWrapper>
   );
 };
 

@@ -1,21 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { TECHNOLOGIES_CONTENT } from "@/app/mock/constants";
 import TechTag from "@/app/components/cards/TechTag";
 import styles from "@/app/styles/sections/Technologies.module.css";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Technologies = () => {
   const { title, description, categories, images } = TECHNOLOGIES_CONTENT;
 
   return (
-    <motion.section
+    <MotionWrapper
+      as="section"
       id="technologies"
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      motionProps={{
+        initial: { opacity: 0, y: 22 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.15 },
+        transition: { duration: 0.8, ease: "easeOut" },
+      }}
       className={`${styles.section}`}
     >
       <div className={styles.bgBall}>
@@ -58,15 +61,17 @@ const Technologies = () => {
 
           <div className={styles.rightSection}>
             {categories.map((cat, i) => (
-              <motion.div
+              <MotionWrapper
                 key={cat.n}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.45,
-                  delay: i * 0.07,
-                  ease: "easeOut",
+                motionProps={{
+                  initial: { opacity: 0, y: 12 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: {
+                    duration: 0.45,
+                    delay: i * 0.07,
+                    ease: "easeOut",
+                  },
                 }}
                 className={styles.categoryItem}
               >
@@ -80,12 +85,12 @@ const Technologies = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </MotionWrapper>
             ))}
           </div>
         </div>
       </div>
-    </motion.section>
+    </MotionWrapper>
   );
 };
 

@@ -1,26 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { IMAGE_BASE } from "@/app/mock/constants";
 import { PRODUCTS_CONTENT } from "@/app/mock/constants";
 import ProductCard from "../cards/ProductCard";
 import styles from "@/app/styles/sections/Products.module.css";
 import { ServiceCardProps } from "@/app/types";
+import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Products = () => {
   const { title, description, cards } = PRODUCTS_CONTENT;
 
   return (
-    <motion.section
+    <MotionWrapper
+      as="section"
       id="products"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9 }}
       className={`relative px-4 py-12 md:py-20 ${styles.section}`}
+      motionProps={{
+        initial: { opacity: 0, y: 40 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.9 },
+      }}
     >
-      <motion.div className={styles.bgBall}>
+      <MotionWrapper className={styles.bgBall}>
         <div className="relative w-full h-full">
           <Image
             src={`${IMAGE_BASE}/main-ball.png`}
@@ -30,7 +33,7 @@ const Products = () => {
             className={styles.bgBallImage}
           />
         </div>
-      </motion.div>
+      </MotionWrapper>
 
       <div className="mx-auto max-w-full sm:max-w-8/10">
         <div className="max-w-155">
@@ -53,7 +56,7 @@ const Products = () => {
           ))}
         </div>
       </div>
-    </motion.section>
+    </MotionWrapper>
   );
 };
 

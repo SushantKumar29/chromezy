@@ -11,7 +11,13 @@ const InsightCard = ({
   return (
     <>
       <div className={styles.imageContainer}>
-        <Image src={insight.image} alt={insight.title} fill className={styles.image} />
+        <Image
+          src={insight.image}
+          alt={insight.title}
+          fill
+          sizes="(max-width: 768px) 300px, (max-width: 1200px) 40vw, 620px"
+          className={styles.image}
+        />
       </div>
 
       <div className={styles.content}>

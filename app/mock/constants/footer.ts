@@ -33,8 +33,8 @@ export const FOOTER_CONTENT = {
   },
   copyright: {
     year: "2024",
-    company: "Dbnk Designs, All Rights Reserved",
-    designer: "Debasish Naik",
+    company: "Sks Designs, All Rights Reserved",
+    designer: "Sushant Kumar",
   },
   links: { terms: "#", privacy: "#", designedBy: "#" },
   social: {
