@@ -93,6 +93,7 @@ npm run test:watch  // Runs tests in watch mode for development
 
 ## Folder Structure:
 
+```
 chromezy/
 ├── .github/
 │ └── workflows/
@@ -136,6 +137,7 @@ chromezy/
 ├── tsconfig.json # TypeScript configuration
 ├── package.json # Project dependencies and scripts
 └── README.md # Project documentation
+```
 
 ## Testing
 
