@@ -1,0 +1,148 @@
+:root {
+  --footer-bg: #000000;
+  --footer-divider: #ffffff1a;
+  --footer-nav-border: #ffffff1a;
+  --footer-description: #ffffff8c;
+  --footer-legal-link: #ffffff80;
+  --footer-legal-divider: #ffffff4d;
+  --footer-nav-default: #ffffffb3;
+  --footer-social-icon: #ffffff99;
+  --footer-copyright: #ffffff73;
+  --footer-social-text: #ffffff73;
+  --footer-white: #ffffff;
+  --footer-legal-link-hover: #ffffffcc;
+  --footer-nav-blue: #60a5fa;
+  --footer-nav-blue-hover: #93c5fd;
+  --footer-social-border-hover: #ffffff66;
+  --footer-nav-arrow: #ffffff66;
+  --footer-nav-arrow-hover: #ffffffcc;
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--footer-bg);
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--footer-divider);
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--footer-description);
+}
+
+.legalLink {
+  color: var(--footer-legal-link);
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: var(--footer-legal-link-hover);
+}
+
+.legalDivider {
+  color: var(--footer-legal-divider);
+}
+
+.contactIcon {
+  display: flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--footer-white);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--footer-nav-border);
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.navItemBorderTop {
+  border-top: 1px solid var(--footer-nav-border);
+}
+
+.navItemDefault {
+  color: var(--footer-nav-default);
+}
+
+.navItemDefault:hover {
+  color: var(--footer-white);
+}
+
+.navItemBold {
+  color: var(--footer-white);
+  font-weight: 700;
+}
+
+.navItemBlue {
+  color: var(--footer-nav-blue);
+  font-weight: 600;
+}
+
+.navItemBlue:hover {
+  color: var(--footer-nav-blue-hover);
+}
+
+.navItem:hover {
+  opacity: var(--footer-nav-arrow-hover);
+}
+
+.blueArrow {
+  stroke: var(--footer-nav-blue);
+}
+
+.whiteArrow {
+  stroke: var(--footer-white);
+}
+
+.socialIcon {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  color: var(--footer-social-icon);
+  transition: all 0.2s;
+}
+
+.socialIcon:hover {
+  color: var(--footer-white);
+  border-color: var(--footer-social-border-hover);
+}
+
+.copyright {
+  color: var(--footer-copyright);
+  font-size: 13px;
+}
+
+.designerLink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+  color: inherit;
+}
+
+.designerLink:hover {
+  color: var(--footer-legal-link-hover);
+}
+
+.socialText {
+  color: var(--footer-social-text);
+  font-size: 13px;
+}

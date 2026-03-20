@@ -1,0 +1,54 @@
+.overlayContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.topGradient {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  top: 0;
+  height: 31.25rem;
+  background: radial-gradient(ellipse at top, #095dff80, transparent 60%);
+}
+
+.leftGradient {
+  position: absolute;
+  inset-block-start: 0;
+  inset-block-end: 3rem;
+  inset-inline-start: 0;
+  width: 31.25rem;
+  background: radial-gradient(circle at left, #4d54e880, transparent 60%);
+}
+
+.rightGradient {
+  position: absolute;
+  inset-block-start: 0;
+  inset-block-end: 3rem;
+  inset-inline-end: 0;
+  width: 31.25rem;
+  background: radial-gradient(circle at right, #4d54e880, transparent 60%);
+}
+
+.centerGradientOne {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, #095dff40, transparent 40%);
+}
+
+.centerGradientTwo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 60%, #4d54e880, transparent 45%);
+}
+
+.bottomLeftGradient {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  width: 31.25rem;
+  height: 31.25rem;
+  background: radial-gradient(circle at bottom left, #4d54e880, transparent 60%);
+}

@@ -1,0 +1,192 @@
+:root {
+  --product-card-min-height: 30rem;
+  --product-card-bg-mvp: #3d4db7;
+  --product-card-bg-saas: #8e244b;
+  --product-card-bg-ai: #b07a2e;
+  --product-card-bg-commerce: #1f5132;
+  --product-badge-bg: #ffffff26;
+  --product-button-bg: #000000;
+}
+
+.card {
+  position: relative;
+  min-height: var(--product-card-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 1.25rem;
+  width: 100%;
+}
+
+/* Tone-specific backgrounds */
+.bgMvp {
+  background-color: var(--product-card-bg-mvp);
+}
+
+.bgSaas {
+  background-color: var(--product-card-bg-saas);
+}
+
+.bgAi {
+  background-color: var(--product-card-bg-ai);
+}
+
+.bgCommerce {
+  background-color: var(--product-card-bg-commerce);
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  left: 1.25rem;
+  top: 1.25rem;
+  border-radius: 9999px;
+  background-color: var(--product-badge-bg);
+  padding: 0.4rem 0.875rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+/* Decorative image */
+.decorativeImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.decorativeImage img {
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
+  width: 160px;
+  height: 160px;
+}
+
+/* Content */
+.content {
+  position: relative;
+  margin-top: 5rem;
+  z-index: 10;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.description {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CTA Button */
+.ctaButton {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: var(--product-button-bg);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  position: relative;
+  white-space: nowrap;
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+}
+
+.ctaIconWrapper {
+  display: flex;
+  height: 1.75rem;
+  width: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.ctaIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .card {
+    min-height: 26rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .decorativeImage img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: 24rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  .ctaButton {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .decorativeImage img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .card {
+    min-height: 22rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .ctaButton {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
