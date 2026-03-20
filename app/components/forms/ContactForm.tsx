@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { CONTACT_CONTENT } from "@/app/mock/constants";
 import { contactFormSchema, ContactFormData } from "@/app/lib/validations/contactValidation";
 import styles from "@/app/styles/sections/Contact.module.css";
-import { ContactFormProps } from "@/app/types";
 
 /*
   This is the Contact Us form with validations and submit functionality
@@ -15,9 +14,10 @@ import { ContactFormProps } from "@/app/types";
   - For validation we have used zod with the hooks-resolvers
 */
 
-const ContactForm = ({ showEnvelope = false }: ContactFormProps) => {
+const ContactForm = () => {
   const { form, images } = CONTACT_CONTENT;
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // These statuses represent different states of the form and are used to show different messages
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   // Here we are resolving the contactFormSchema and zodResolver for registering the fields and their default values
@@ -37,7 +37,7 @@ const ContactForm = ({ showEnvelope = false }: ContactFormProps) => {
     },
   });
 
-  // In this on Submit, we are just console logging the values
+  // In this on Submit, we are just console logging the values and setting the status to display different messages
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
@@ -62,17 +62,15 @@ const ContactForm = ({ showEnvelope = false }: ContactFormProps) => {
 
   return (
     <div className={styles.formWrapper}>
-      {showEnvelope && (
-        <div className={styles.envelopeCorner}>
-          <Image
-            src={images.envelope}
-            alt="Envelope"
-            width={120}
-            height={120}
-            className="object-contain"
-          />
-        </div>
-      )}
+      <div className={styles.envelopeCorner}>
+        <Image
+          src={images.envelope}
+          alt="Envelope"
+          width={120}
+          height={120}
+          className="object-contain"
+        />
+      </div>
 
       <div className={styles.formContent}>
         <h3 className={styles.formTitle}>{form.title}</h3>
@@ -101,7 +99,7 @@ const ContactForm = ({ showEnvelope = false }: ContactFormProps) => {
                     {...register(fieldName)}
                     className={`${styles.formInput} ${error ? styles.inputError : ""}`}
                     placeholder={placeholder}
-                    aria-invalid={error ? "true" : "false"}
+                    aria-invalid={error ? "true" : "false"} // This attribute indicates that the value entered into a form control are valid or not which helps improving accessibility
                   />
                   <p className={styles.errorText}>{error?.message || ""}</p>
                 </div>
@@ -115,7 +113,7 @@ const ContactForm = ({ showEnvelope = false }: ContactFormProps) => {
                 rows={4}
                 className={`${styles.formTextarea} ${errors.message ? styles.inputError : ""}`}
                 placeholder={form.textareaPlaceholder}
-                aria-invalid={errors.message ? "true" : "false"}
+                aria-invalid={errors.message ? "true" : "false"} // This attribute indicates that the value entered into a form control are valid or not which helps improving accessibility
               />
               <p className={styles.errorText}>{errors.message?.message || ""}</p>
             </div>

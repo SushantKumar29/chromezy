@@ -67,6 +67,6 @@ export const TECHNOLOGIES_CONTENT = {
   ],
   images: {
     strippedBall: `${IMAGE_BASE}/technologies/stripped-ball.svg`,
-    threeDRender: `${IMAGE_BASE}/technologies/spiral-transparent.png`,
+    spiralImg: `${IMAGE_BASE}/technologies/spiral-transparent.png`,
   },
 };

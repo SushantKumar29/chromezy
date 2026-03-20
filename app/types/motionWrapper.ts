@@ -8,3 +8,16 @@ export interface MotionWrapperProps {
   motionProps?: MotionProps;
   [key: string]: unknown;
 }
+
+export interface MockMotionWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+  motionProps?: {
+    initial?: Record<string, unknown>;
+    whileInView?: Record<string, unknown>;
+    viewport?: Record<string, unknown>;
+    transition?: Record<string, unknown>;
+  };
+  as?: React.ElementType;
+  id?: string;
+}

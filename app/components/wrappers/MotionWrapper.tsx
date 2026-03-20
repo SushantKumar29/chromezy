@@ -1,4 +1,3 @@
-// components/MotionWrapper.tsx
 "use client";
 
 import { MotionWrapperProps } from "@/app/types/motionWrapper";

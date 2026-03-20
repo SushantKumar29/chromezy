@@ -59,7 +59,7 @@ const Header = () => {
                 name="Toggle Menu"
                 onClick={toggleMobileMenu}
                 className={`${styles.menuButton} ${styles.mobileOnly}`}
-                aria-label={isMobileMenuOpen ? "closeMenu" : "openMenu"}
+                aria-label="Toggle Menu"
                 type="button"
               >
                 {isMobileMenuOpen ? (

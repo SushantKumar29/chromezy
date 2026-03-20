@@ -67,7 +67,7 @@ const ContactUs = () => {
           </div>
 
           <div className={styles.formContainer}>
-            <ContactForm showEnvelope />
+            <ContactForm />
           </div>
         </div>
       </div>

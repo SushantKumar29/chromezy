@@ -81,3 +81,12 @@
   mix-blend-mode: screen;
   filter: blur(60px);
 }
+
+.strippedBgBallImage {
+  position: absolute;
+  top: 15%;
+  object-fit: contain;
+  object-position: left;
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 90%);
+}

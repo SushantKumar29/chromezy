@@ -41,7 +41,7 @@ const Main = () => {
 
   return (
     <main id="main">
-      <Preloader sections={sections} />;
+      <Preloader sections={sections} />
     </main>
   );
 };

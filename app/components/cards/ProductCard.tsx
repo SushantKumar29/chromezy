@@ -1,10 +1,10 @@
-import { ServiceCardProps } from "@/app/types";
+import { ProductCardProps } from "@/app/types";
 import Image from "next/image";
 import { PRODUCT_CARD_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/cards/ProductCard.module.css";
 import { NavLink } from "@/app/shared/ui/NavLink";
 
-const ProductCard = ({ title, description, cta, tone }: ServiceCardProps) => {
+const ProductCard = ({ title, description, cta, tone }: ProductCardProps) => {
   const bgClass = {
     mvp: styles.bgMvp,
     saas: styles.bgSaas,

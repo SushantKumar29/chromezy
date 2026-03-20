@@ -21,20 +21,8 @@ const Technologies = () => {
       }}
       className={`${styles.section}`}
     >
-      <div className={styles.bgBall}>
-        <div className="relative w-full h-full">
-          <Image
-            src={images.strippedBall}
-            alt="Stripped Ball"
-            height={800}
-            width={400}
-            className={`${styles.bgBallImage}`}
-          />
-        </div>
-      </div>
-
       <div className="mx-auto w-full max-w-full sm:max-w-8/10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[480px_1fr] gap-8 md:gap-12 lg:gap-30 justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-[480px_1fr] gap-2 md:gap-10 lg:gap-30 justify-between">
           <div className={styles.leftCard}>
             <h2 className={styles.leftCardTitle}>
               {title.line1}
@@ -50,7 +38,7 @@ const Technologies = () => {
 
             <div className={styles.leftCardImage}>
               <Image
-                src={images.threeDRender}
+                src={images.spiralImg}
                 alt="Spiral"
                 width={400}
                 height={400}

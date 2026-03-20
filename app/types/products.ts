@@ -1,4 +1,4 @@
-export interface ServiceCardProps {
+export interface ProductCardProps {
   title: string;
   description: string;
   cta: string;

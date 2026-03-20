@@ -5,7 +5,7 @@ import { IMAGE_BASE } from "@/app/mock/constants";
 import { PRODUCTS_CONTENT } from "@/app/mock/constants";
 import ProductCard from "../cards/ProductCard";
 import styles from "@/app/styles/sections/Products.module.css";
-import { ServiceCardProps } from "@/app/types";
+import { ProductCardProps } from "@/app/types";
 import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Products = () => {
@@ -23,7 +23,7 @@ const Products = () => {
         transition: { duration: 0.9 },
       }}
     >
-      <MotionWrapper className={styles.bgBall}>
+      <div className={styles.bgBall}>
         <div className="relative w-full h-full">
           <Image
             src={`${IMAGE_BASE}/main-ball.png`}
@@ -33,7 +33,7 @@ const Products = () => {
             className={styles.bgBallImage}
           />
         </div>
-      </MotionWrapper>
+      </div>
 
       <div className="mx-auto max-w-full sm:max-w-8/10">
         <div className="max-w-155">
@@ -45,12 +45,12 @@ const Products = () => {
       <div className="mx-auto w-full xl:w-8/10 mt-16 overflow-x-auto pb-6 hide-scrollbar">
         <div className="flex gap-4">
           {cards.map((card) => (
-            <div key={card.title} className="flex-1 min-w-80">
+            <div key={card.title} className="flex-1 min-w-70">
               <ProductCard
                 title={card.title}
                 description={card.description}
                 cta={card.cta}
-                tone={card.tone as ServiceCardProps["tone"]}
+                tone={card.tone as ProductCardProps["tone"]}
               />
             </div>
           ))}

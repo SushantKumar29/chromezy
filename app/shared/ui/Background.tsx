@@ -22,16 +22,23 @@ const Background = () => {
   const ballX = useTransform(scrollY, [0, 1200], [0, -400]);
   const ballScale = useTransform(scrollY, [0, 1200], [1, 1.4]);
   const ballOpacity = useTransform(scrollY, [0, 1000, 2000], [1, 0.8, 0.5]);
-
   const ballBlur = useTransform(scrollY, [0, 1000, 2000], ["blur(0px)", "blur(0px)", "blur(8px)"]);
+
+  const strippedBallY = useTransform(
+    scrollY,
+    [3000, 3500, 4000, 4500, 4800],
+    [1000, 500, 1500, 1800, 1300]
+  );
+  const strippedBallX = useTransform(scrollY, [0, 3000, 4000, 5000], [-6000, 400, 300, -1200]);
+  const strippedBallScale = useTransform(scrollY, [3500, 5000], [1.5, 2]);
+  const strippedBallOpacity = useTransform(scrollY, [0, 3500], [0, 1]);
+  const strippedBallRotate = useTransform(scrollY, [3500, 5000], [0, 100]);
 
   return (
     <div className={styles.container}>
       <div
         className={styles.patternBackground}
-        style={{
-          backgroundImage: `url(${IMAGE_BASE}/hero/bg-gradient.svg)`,
-        }}
+        style={{ backgroundImage: `url(${IMAGE_BASE}/hero/bg-gradient.svg)` }}
       />
 
       <MotionWrapper
@@ -72,6 +79,26 @@ const Background = () => {
             className={styles.ballImage}
             loading="eager" // This option explicitly set eager loading
             fetchPriority="auto" // This option set lower priority than triangle
+          />
+        </div>
+      </MotionWrapper>
+
+      <MotionWrapper
+        style={{
+          x: strippedBallX,
+          y: strippedBallY,
+          scale: strippedBallScale,
+          opacity: strippedBallOpacity,
+          rotate: strippedBallRotate,
+        }}
+      >
+        <div className="relative w-full h-full">
+          <Image
+            src={`${IMAGE_BASE}/technologies/stripped-ball.svg`}
+            alt="Stripped Ball"
+            height={800}
+            width={400}
+            className={`${styles.bgBallImage}`}
           />
         </div>
       </MotionWrapper>

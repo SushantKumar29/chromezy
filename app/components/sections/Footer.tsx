@@ -2,10 +2,11 @@ import Image from "next/image";
 import { FOOTER_NAV_LEFT, FOOTER_NAV_RIGHT, FOOTER_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Footer.module.css";
 import { NavLink } from "@/app/shared/ui/NavLink";
+import SocialLinks from "../links/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="w-full bg-black px-4 py-12 md:py-20">
+    <footer id="footer" className="w-full bg-background px-4 py-12 md:py-20">
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className={styles.divider} />
 
@@ -106,37 +107,7 @@ const Footer = () => {
               Designed by {FOOTER_CONTENT.copyright.designer}
             </NavLink>
           </div>
-
-          <div className="flex items-center gap-2">
-            <span className={styles.socialText}>Connect with us:</span>
-
-            <NavLink href={FOOTER_CONTENT.social.facebook} className={styles.socialIcon}>
-              <Image
-                src={FOOTER_CONTENT.social.facebookIcon}
-                alt="Phone icon"
-                width={24}
-                height={24}
-              />
-            </NavLink>
-
-            <NavLink href={FOOTER_CONTENT.social.instagram} className={styles.socialIcon}>
-              <Image
-                src={FOOTER_CONTENT.social.instagramIcon}
-                alt="Phone icon"
-                width={24}
-                height={24}
-              />
-            </NavLink>
-
-            <NavLink href={FOOTER_CONTENT.social.linkedin} className={styles.socialIcon}>
-              <Image
-                src={FOOTER_CONTENT.social.linkedinIcon}
-                alt="Phone icon"
-                width={24}
-                height={24}
-              />
-            </NavLink>
-          </div>
+          <SocialLinks />
         </div>
       </div>
     </footer>

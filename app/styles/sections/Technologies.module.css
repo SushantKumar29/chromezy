@@ -26,20 +26,10 @@
   z-index: 0;
 }
 
-.bgBallImage {
-  position: absolute;
-  top: 15%;
-  object-fit: contain;
-  object-position: left;
-  mask-image: linear-gradient(to right, black 30%, transparent 90%);
-  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 90%);
-}
-
 .leftCard {
   border-radius: 40px;
   background: var(--tech-card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
   padding-top: 4rem;
   display: flex;
@@ -93,7 +83,6 @@
   flex-direction: column;
   gap: 1rem;
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
 }
 
 .categoryItem:first-child {
@@ -123,8 +112,7 @@
   flex-wrap: wrap;
   gap: 0.375rem;
   height: 5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
 }
 
 .tag {
@@ -181,7 +169,6 @@
     flex-direction: row;
     gap: 1.5rem;
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
   }
 
   .categoryNumber {
@@ -222,7 +209,6 @@
   .categoryItem {
     gap: 1.5rem;
     padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
   }
 
   .categoryTitle {
