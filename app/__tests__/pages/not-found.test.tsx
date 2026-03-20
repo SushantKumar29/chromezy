@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import NotFound from "../not-found";
+import NotFound from "../../not-found";
 
 /*
   Here we are testing the not found page

@@ -11,14 +11,14 @@ import { render, screen } from "@testing-library/react";
 */
 
 // Here we are mocking the Background component
-jest.mock("../shared/ui/Background", () => {
+jest.mock("../../shared/ui/Background", () => {
   return function MockBackground() {
     return <div data-testid="mock-background">Background Component</div>;
   };
 });
 
 // Here we are mocking the Header component
-jest.mock("../components/sections/Header", () => {
+jest.mock("../../components/sections/Header", () => {
   return function MockHeader() {
     return <div data-testid="mock-header">Header Component</div>;
   };
@@ -32,7 +32,7 @@ const mockMain = jest.fn().mockImplementation(() => {
 });
 
 // Here we are mocking the Footer component
-jest.mock("../components/sections/Footer", () => {
+jest.mock("../../components/sections/Footer", () => {
   return function MockFooter() {
     return <div data-testid="mock-footer">Footer Component</div>;
   };
@@ -46,7 +46,7 @@ jest.mock("next/dynamic", () => ({
 
 describe("Home Page", () => {
   it("renders all main components", () => {
-    const Page = require("../page").default;
+    const Page = require("../../page").default;
     render(<Page />);
 
     expect(screen.getByTestId("mock-background")).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe("Home Page", () => {
   });
 
   it("renders components in the correct order", () => {
-    const Page = require("../page").default;
+    const Page = require("../../page").default;
     render(<Page />);
 
     const container = screen.getByTestId("mock-background").parentElement; // THis extracts the parent element of the rendered components (here a <div>)
