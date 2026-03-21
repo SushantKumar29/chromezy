@@ -29,7 +29,11 @@ const Background = () => {
     [3000, 3500, 4000, 4500, 4800],
     [1000, 500, 1500, 1800, 1300]
   );
-  const strippedBallX = useTransform(scrollY, [0, 3000, 4000, 5000], [-6000, 400, 300, -1200]);
+  const strippedBallX = useTransform(
+    scrollY,
+    [0, 3000, 4000, 4500, 5000],
+    [-6000, 400, 300, -400, -1000]
+  );
   const strippedBallScale = useTransform(scrollY, [3500, 5000], [1.5, 2]);
   const strippedBallOpacity = useTransform(scrollY, [0, 3500], [0, 1]);
   const strippedBallRotate = useTransform(scrollY, [3500, 5000], [0, 100]);
