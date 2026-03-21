@@ -1,0 +1,37 @@
+:root {
+  --brand-border-color: #ffffff1a;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--brand-border-color);
+}
+
+.scrollContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.imageContainer {
+  position: relative;
+  height: 3rem;
+  width: auto;
+  aspect-ratio: 3/1;
+  flex-shrink: 0;
+}
+
+.imageContainer:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
