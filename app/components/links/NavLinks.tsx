@@ -7,13 +7,13 @@ import { NavLinksProps } from "@/app/types";
   This NavLinks components is used to render the navigation links in the header section
 */
 
-export const AboutUsLink = () => {
+export const AboutUsLink = ({ className }: { className?: string }) => {
   const aboutLinkItem = ABOUT_ITEM;
   return (
     <NavLink
       key={aboutLinkItem.label}
       href={aboutLinkItem.href}
-      className={`${aboutLinkItem.selected ? styles.selectedNav : ""} ${styles.navLink}`}
+      className={`${className} ${styles.navLink} ${aboutLinkItem.selected ? styles.selectedNav : ""}`}
     >
       {aboutLinkItem.label}
     </NavLink>

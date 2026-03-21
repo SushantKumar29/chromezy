@@ -7,8 +7,7 @@
   --header-mobile-menu-bg: #000000f2;
   --header-nav-bg: #00000033;
   --header-nav-selected-color: linear-gradient(270deg, #11deff 0%, #4380ff 100%);
-  --header-contact-button-shadow:
-    0px 22.3363px 17.869px rgba(0, 0, 0, 0.04), 0px 100px 80px rgba(0, 0, 0, 0.07);
+  --header-contact-button-shadow: 0px 22.3363px 17.869px #0000000a, 0px 100px 80px #00000012;
 }
 
 .header {
@@ -22,6 +21,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex-wrap: nowrap;
 }
 
 .navLink {
@@ -122,6 +122,25 @@
 
 .logo {
   opacity: 0.9;
+  width: auto;
+  height: auto;
+}
+
+.searchContainer {
+  position: absolute;
+  top: 3rem;
+  width: 16rem;
+  z-index: 50;
+}
+
+.searchInput {
+  width: 100%;
+  background-color: var(--header-bg);
+  border: 1px solid;
+  border-radius: 0.75rem;
+  outline: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 1440px) {
@@ -148,5 +167,35 @@
 @media (min-width: 1280px) {
   .navLink {
     padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchInput {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    min-width: 70px;
+  }
+
+  .contactButton {
+    padding: 0.5rem !important;
+    min-width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    min-width: 60px;
+  }
+  .searchContainer {
+    left: -7rem;
   }
 }
