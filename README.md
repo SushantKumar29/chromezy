@@ -6,7 +6,7 @@ A modern Next.js application with automated CI/CD pipeline.
 
 - **Framework**: Next.js (React)
 - **Language**: TypeScript
-- **Testing**: Jest with Next.js SWC transformer
+- **Testing**: Jest with Next.js
 - **Linting**: ESLint
 - **CI/CD**: GitHub Actions
 - **Package Manager**: npm

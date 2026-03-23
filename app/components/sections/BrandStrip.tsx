@@ -10,7 +10,7 @@ const BrandStrip = () => {
         <div
           className={`
             flex md:justify-between items-center gap-8 md:gap-4.5 
-            py-16 overflow-x-auto md:overflow-visible
+            py-16 overflow-x-auto
             ${styles.scrollContainer}
           `}
         >
