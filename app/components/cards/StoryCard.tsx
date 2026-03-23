@@ -7,7 +7,13 @@ const StoryCard = ({ card, large = true }: StoryCardProps) => {
   return (
     <div className={styles.card}>
       <div className={`${styles.imageContainer} ${large ? styles.imageLarge : styles.imageSmall}`}>
-        <Image src={card.image} alt={card.title} fill className="object-cover" />
+        <Image
+          src={card.image}
+          alt={card.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          className="object-cover"
+        />
 
         <div className={styles.badge}>
           <span className={styles.badgeText}>{STORIES_CONTENT.badge}</span>
