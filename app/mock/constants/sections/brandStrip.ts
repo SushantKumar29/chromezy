@@ -1,4 +1,4 @@
-import { IMAGE_BASE } from "./urls";
+import { IMAGE_BASE } from "../urls";
 
 export const BRAND_LOGOS = [
   `${IMAGE_BASE}/brands/brand-1.svg`,

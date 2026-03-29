@@ -6,14 +6,12 @@ import { ImageProps } from "next/image";
 import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
 
 /*
-  Here we are testing the Hero component
   This test includes:
   - Rendering text elements
   - Rendering background image
   - Rendering the stats
 */
 
-// Here we are mocking the next/image because the Hero section has a background image
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: ImageProps) => {
@@ -22,7 +20,6 @@ jest.mock("next/image", () => ({
   },
 }));
 
-// Here we are mocking the MotionWrapper component becuause the text elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
@@ -42,7 +39,6 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-// These are some mock CSS classes for the texts and background image
 jest.mock("../../styles/sections/Hero.module.css", () => ({
   bgFlower: "mock-bg-flower",
   highlightCyan: "mock-highlight-cyan",
@@ -97,7 +93,6 @@ describe("Hero", () => {
     expect(flowerImage).toHaveClass("mock-bg-flower");
   });
 
-  // Here we are checking the motion wrapper in the hero component with the correct motion props
   it("renders MotionWrapper with correct motion props", () => {
     render(<Hero />);
 

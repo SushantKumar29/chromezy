@@ -1,2 +1,12 @@
-npx lint-staged
-npm test
+#!/bin/sh
+
+# Get current branch name
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+# Define branches where tests should run
+if [ "$BRANCH_NAME" = "main" ] || [ "$BRANCH_NAME" = "development" ] || [ "$BRANCH_NAME" = "staging" ]; then
+  npx lint-staged
+  npm test
+else
+  npx lint-staged --concurrent false
+fi

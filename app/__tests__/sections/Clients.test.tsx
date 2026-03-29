@@ -6,19 +6,16 @@ import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
 import { ClientCardProps } from "@/app/types";
 
 /*
-  Here we are testing the Clients component
   This test includes:
   - Rendering title and subtitle
   - Rendering the cards with correct props
   - Rendering the navigation buttons and scrolling the cards
 */
 
-// Here we are mocking the scrollTo function before proceeding
 beforeAll(() => {
   Element.prototype.scrollTo = jest.fn();
 });
 
-// Here we are mocking the ClientCard component because we are rendering ClientCards in the Clients component
 jest.mock("../../components/cards/ClientCard", () => {
   return function MockClientCard({ client }: ClientCardProps) {
     return (
@@ -34,7 +31,6 @@ jest.mock("../../components/cards/ClientCard", () => {
   };
 });
 
-// Here we are mocking the MotionWrapper component because the elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
@@ -56,7 +52,6 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-// These are the mocks for the scrollCard and getScrollPosition functions those are used to scroll the cards
 const mockScrollCard = jest.fn();
 const mockGetScrollPosition = jest.fn();
 
@@ -73,7 +68,6 @@ describe("Clients", () => {
     expect(screen.getByText(CLIENTS_CONTENT.subtitle)).toBeInTheDocument();
   });
 
-  // Here we are checking if the rendered cards matches the number of cards to be rendered
   it("renders all client cards", () => {
     render(<Clients />);
 
@@ -81,7 +75,6 @@ describe("Clients", () => {
     expect(cards).toHaveLength(CLIENTS_CONTENT.clients.length);
   });
 
-  // Here we are checking if the rendered cards have the correct props
   it("passes correct client data to each ClientCard", () => {
     render(<Clients />);
 
@@ -97,7 +90,6 @@ describe("Clients", () => {
     });
   });
 
-  // Here we are checking if the navigation buttons are rendered
   it("renders navigation buttons", () => {
     render(<Clients />);
 
@@ -108,7 +100,6 @@ describe("Clients", () => {
     expect(nextButton).toBeInTheDocument();
   });
 
-  // Clicking on the left button, the previous card should be scrolled
   it("calls scrollCard with 'left' when clicking previous button", () => {
     render(<Clients />);
 
@@ -118,7 +109,6 @@ describe("Clients", () => {
     expect(mockScrollCard).toHaveBeenCalledWith(expect.any(Object), "left");
   });
 
-  // Clicking on the right button, the next card should be scrolled
   it("calls scrollCard with 'right' when clicking next button", () => {
     render(<Clients />);
 
@@ -128,7 +118,6 @@ describe("Clients", () => {
     expect(mockScrollCard).toHaveBeenCalledWith(expect.any(Object), "right");
   });
 
-  // If there is a selected card, then it should be scrolled as the first card when the component mounts
   it("calls getScrollPosition on mount when there's a selected client", () => {
     render(<Clients />);
 
@@ -136,7 +125,6 @@ describe("Clients", () => {
     expect(mockGetScrollPosition).toHaveBeenCalledWith(expect.any(Object), selectedIndex);
   });
 
-  // Here we are checking if the MotionWrapper has the correct motion props
   it("renders MotionWrapper with correct motion props", () => {
     render(<Clients />);
 

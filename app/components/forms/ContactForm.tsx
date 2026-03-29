@@ -7,20 +7,20 @@ import { useForm } from "react-hook-form";
 import { CONTACT_CONTENT } from "@/app/mock/constants";
 import { contactFormSchema, ContactFormData } from "@/app/lib/validations/contactValidation";
 import styles from "@/app/styles/sections/Contact.module.css";
+import { submitContactForm } from "@/app/effects/contactApi";
 
 /*
-  This is the Contact Us form with validations and submit functionality
-  - We have used react-hook-form here
-  - For validation we have used zod with the hooks-resolvers
+  Contact Us form with validations and submit functionality
+  - Used react-hook-form here
+  - For validation zod is used with the hooks-resolvers
 */
 
 const ContactForm = () => {
   const { form, images } = CONTACT_CONTENT;
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // These statuses represent different states of the form and are used to show different messages
+
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  // Here we are resolving the contactFormSchema and zodResolver for registering the fields and their default values
   const {
     register,
     handleSubmit,
@@ -37,26 +37,21 @@ const ContactForm = () => {
     },
   });
 
-  // In this on Submit, we are just console logging the values and setting the status to display different messages
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
     try {
-      console.log("Form submitted:", data);
+      await submitContactForm(data);
       setSubmitStatus("success");
       reset();
-
-      setTimeout(() => {
-        setSubmitStatus("idle");
-      }, 5000);
     } catch (error) {
       setSubmitStatus("error");
       console.error(error);
-      setTimeout(() => {
-        setSubmitStatus("idle");
-      }, 5000);
     } finally {
       setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 3000);
     }
   };
 
@@ -99,7 +94,7 @@ const ContactForm = () => {
                     {...register(fieldName)}
                     className={`${styles.formInput} ${error ? styles.inputError : ""}`}
                     placeholder={placeholder}
-                    aria-invalid={error ? "true" : "false"} // This attribute indicates that the value entered into a form control are valid or not which helps improving accessibility
+                    aria-invalid={error ? "true" : "false"}
                   />
                   <p className={styles.errorText}>{error?.message || ""}</p>
                 </div>
@@ -113,7 +108,7 @@ const ContactForm = () => {
                 rows={4}
                 className={`${styles.formTextarea} ${errors.message ? styles.inputError : ""}`}
                 placeholder={form.textareaPlaceholder}
-                aria-invalid={errors.message ? "true" : "false"} // This attribute indicates that the value entered into a form control are valid or not which helps improving accessibility
+                aria-invalid={errors.message ? "true" : "false"}
               />
               <p className={styles.errorText}>{errors.message?.message || ""}</p>
             </div>

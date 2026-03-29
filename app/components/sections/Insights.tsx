@@ -1,17 +1,17 @@
 "use client";
 
-import { INSIGHTS_CONTENT } from "@/app/mock/constants";
+import { INSIGHTS_CONTENT, ROUTES } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Insights.module.css";
 import InsightCard from "../cards/InsightCard";
 import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Insights = () => {
-  const { title, subtitle, insights } = INSIGHTS_CONTENT;
+  const { title, subtitle, linkIcon, insights } = INSIGHTS_CONTENT;
 
   return (
     <MotionWrapper
       as="section"
-      id="features"
+      id={ROUTES.insights}
       motionProps={{
         initial: { opacity: 0, y: 22 },
         whileInView: { opacity: 1, y: 0 },
@@ -27,7 +27,7 @@ const Insights = () => {
         <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {insights.map((item, i) => (
             <MotionWrapper
-              key={i}
+              key={item.id}
               className={styles.card}
               motionProps={{
                 initial: { opacity: 0, y: 16 },
@@ -36,7 +36,7 @@ const Insights = () => {
                 transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" },
               }}
             >
-              <InsightCard insight={item} />
+              <InsightCard linkIcon={linkIcon} insight={item} />
             </MotionWrapper>
           ))}
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { IMAGE_BASE } from "@/app/mock/constants";
+import { IMAGE_BASE, ROUTES } from "@/app/mock/constants";
 import { PRODUCTS_CONTENT } from "@/app/mock/constants";
 import ProductCard from "../cards/ProductCard";
 import styles from "@/app/styles/sections/Products.module.css";
@@ -9,12 +9,12 @@ import { ProductCardProps } from "@/app/types";
 import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Products = () => {
-  const { title, description, cards } = PRODUCTS_CONTENT;
+  const { title, description, badgeText, ctaIcon, cards } = PRODUCTS_CONTENT;
 
   return (
     <MotionWrapper
       as="section"
-      id="products"
+      id={ROUTES.products}
       className={`relative px-4 py-12 md:py-20 ${styles.section}`}
       motionProps={{
         initial: { opacity: 0, y: 40 },
@@ -45,12 +45,11 @@ const Products = () => {
       <div className="mx-auto w-full xl:w-8/10 mt-16 overflow-x-auto pb-6 hide-scrollbar">
         <div className="flex gap-4">
           {cards.map((card) => (
-            <div key={card.title} className="flex-1 min-w-70">
+            <div key={card.id} className="flex-1 min-w-70">
               <ProductCard
-                title={card.title}
-                description={card.description}
-                cta={card.cta}
-                tone={card.tone as ProductCardProps["tone"]}
+                {...(card as ProductCardProps)}
+                badgeText={badgeText}
+                ctaIcon={ctaIcon}
               />
             </div>
           ))}

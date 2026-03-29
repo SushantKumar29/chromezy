@@ -4,8 +4,7 @@ import Background from "@/app/shared/ui/Background";
 import { MotionWrapperProps } from "@/app/types/motionWrapper";
 
 /*
-  Here we are testing the shared Background component
-  THis test includes:
+  This test includes:
   - Rendering the component without crashing
   - Renders Motion Wrappers correctly
   - Renders correct CSS classes
@@ -13,7 +12,6 @@ import { MotionWrapperProps } from "@/app/types/motionWrapper";
 
 */
 
-// Here we are mocking the MotionWrapper component because the elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({ children, className, ...rest }: MotionWrapperProps) {
     return (
@@ -24,12 +22,10 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-// Here we are creating constant for the Asset Image URL
 jest.mock("../../mock/constants", () => ({
   IMAGE_BASE: "/test-images",
 }));
 
-// Here we are mocking styles to avoid undefined class name errors
 jest.mock("../../styles/sections/Background.module.css", () => ({
   patternBackground: "mock-patternBackground",
   triangleImage: "mock-triangleImage",

@@ -1,17 +1,17 @@
 "use client";
 
 import StoryCard from "../cards/StoryCard";
-import { STORIES_CONTENT } from "@/app/mock/constants";
+import { ROUTES, STORIES_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Stories.module.css";
 import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Stories = () => {
-  const { title, description, cards } = STORIES_CONTENT;
+  const { title, description, badgeText, linkIcon, cards } = STORIES_CONTENT;
 
   return (
     <MotionWrapper
       as="section"
-      id="stories"
+      id={ROUTES.stories}
       className={`w-full px-4 py-12 md:py-20 ${styles.section}`}
       motionProps={{
         initial: { opacity: 0, y: 22 },
@@ -34,8 +34,8 @@ const Stories = () => {
           </div>
 
           {cards.map((card) => (
-            <div key={card.title} className="lg:col-span-1">
-              <StoryCard card={card} large />
+            <div key={card.id} className="lg:col-span-1">
+              <StoryCard badgeText={badgeText} linkIcon={linkIcon} card={card} />
             </div>
           ))}
         </div>

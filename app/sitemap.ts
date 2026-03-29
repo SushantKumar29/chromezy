@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 /*
-  This is the sitemap.ts file which helps to:
+  Sitemap.ts file helps to:
   - Creates /sitemap.xml listing all our important URLs
   - Helps search engines discover pages they might miss
   - Shows when pages were last updated
@@ -9,8 +9,7 @@ import { MetadataRoute } from "next";
 */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl =
-    process.env.NODE_ENV === "production" ? "https://chromezy.com" : "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
 
   return [
     {

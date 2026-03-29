@@ -4,7 +4,6 @@ import BrandStrip from "@/app/components/sections/BrandStrip";
 import { BRAND_LOGOS } from "@/app/mock/constants";
 
 /*
-  Here we are testing the BrandStrip component
   This test includes:
   - Rendering correct number of brand logos
   - Rendering images with correct alt text

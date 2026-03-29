@@ -1,13 +1,8 @@
 import Image from "next/image";
 import styles from "@/app/styles/sections/Insights.module.css";
-import { INSIGHTS_CONTENT } from "@/app/mock/constants";
+import { InsightCardProps } from "@/app/types/insights";
 
-const InsightCard = ({
-  insight,
-}: {
-  insight: { title: string; description: string; image: string };
-}) => {
-  const { linkIcon } = INSIGHTS_CONTENT;
+const InsightCard = ({ insight, linkIcon }: InsightCardProps) => {
   return (
     <>
       <div className={styles.imageContainer}>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ICON_BASE, IMAGE_BASE } from "@/app/mock/constants";
+import { ICON_BASE, IMAGE_BASE, ROUTES } from "@/app/mock/constants";
 import { HERO_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Hero.module.css";
 import MotionWrapper from "../wrappers/MotionWrapper";
@@ -10,7 +10,7 @@ const Hero = () => {
   const { badge, title, subtitle, description, stats } = HERO_CONTENT;
 
   return (
-    <div id="home" className="relative w-full pt-43.5 pb-0">
+    <div id={ROUTES.home} className="relative w-full pt-43.5 pb-0">
       <div className="relative mx-auto w-full">
         <div className="absolute left-[607.12px] top-[50.9px] h-full">
           <Image
@@ -58,7 +58,7 @@ const Hero = () => {
           <div className="mx-auto mt-24 grid w-full grid-cols-4 gap-4.5">
             {stats.map((s) => (
               <div
-                key={s.label}
+                key={s.id}
                 className={`flex flex-col items-center justify-center gap-1.5  px-3 py-3.5 ${styles.statItem}`}
               >
                 <div className={`text-[32px] font-semibold leading-none ${styles.statValue}`}>

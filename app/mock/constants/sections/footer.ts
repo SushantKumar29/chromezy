@@ -1,19 +1,19 @@
 import { ICON_BASE } from "@/app/mock/constants";
 
 export const FOOTER_NAV_LEFT = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#contact" },
-  { label: "Career", href: "#contact" },
-  { label: "Case Study", href: "#stories" },
-  { label: "Join the Team", href: "#contact", bold: true },
+  { id: "home", label: "Home", href: "#home" },
+  { id: "about", label: "About Us", href: "#contact" },
+  { id: "contact", label: "Career", href: "#contact" },
+  { id: "stories", label: "Case Study", href: "#stories" },
+  { id: "contact2", label: "Join the Team", href: "#contact", bold: true },
 ];
 
 export const FOOTER_NAV_RIGHT = [
-  { label: "AI", href: "#products" },
-  { label: "MVP", href: "#products" },
-  { label: "SaaS", href: "#products" },
-  { label: "E-commerce", href: "#products" },
-  { label: "Work with us", href: "#contact", blue: true },
+  { id: "ai", label: "AI", href: "#products" },
+  { id: "mvp", label: "MVP", href: "#products" },
+  { id: "saas", label: "SaaS", href: "#products" },
+  { id: "commerce", label: "E-commerce", href: "#products" },
+  { id: "contact", label: "Work with us", href: "#contact", blue: true },
 ];
 
 export const FOOTER_CONTENT = {

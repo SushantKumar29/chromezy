@@ -11,9 +11,9 @@ export const HERO_CONTENT = {
   description:
     "At Chromezy, we translate your ideas into market-ready solutions quickly and precisely. Leveraging the power of technology and prioritizing user needs, we deliver products that are both cutting-edge and user-centric.",
   stats: [
-    { value: "200%", label: "Revenue Growth" },
-    { value: "4X", label: "Speed to Market" },
-    { value: "73%", label: "New Orders" },
-    { value: "10K+", label: "Active Users" },
+    { id: 1, value: "200%", label: "Revenue Growth" },
+    { id: 2, value: "4X", label: "Speed to Market" },
+    { id: 3, value: "73%", label: "New Orders" },
+    { id: 4, value: "10K+", label: "Active Users" },
   ],
 };

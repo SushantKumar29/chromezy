@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CONTACT_CONTENT } from "@/app/mock/constants";
+import { CONTACT_CONTENT, ROUTES } from "@/app/mock/constants";
 import ContactForm from "@/app/components/forms/ContactForm";
 import styles from "@/app/styles/sections/Contact.module.css";
 import MotionWrapper from "../wrappers/MotionWrapper";
@@ -12,7 +12,7 @@ const ContactUs = () => {
   return (
     <MotionWrapper
       as="section"
-      id="contact"
+      id={ROUTES.contact}
       className="w-full px-4 py-12 md:py-20"
       motionProps={{
         initial: { opacity: 0, y: 22 },

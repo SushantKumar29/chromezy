@@ -3,10 +3,6 @@ import { NavLink } from "@/app/shared/ui/NavLink";
 import styles from "@/app/styles/sections/Header.module.css";
 import { NavLinksProps } from "@/app/types";
 
-/*
-  This NavLinks components is used to render the navigation links in the header section
-*/
-
 export const AboutUsLink = ({ className }: { className?: string }) => {
   const aboutLinkItem = ABOUT_ITEM;
   return (
@@ -28,7 +24,7 @@ const NavLinks = ({ variant, onItemClick }: NavLinksProps) => {
     <>
       {NAV_ITEMS.map((item) => (
         <NavLink
-          key={item.label}
+          key={item.id}
           href={item.href}
           className={`${item.selected ? styles.selectedNav : ""} ${linkClasses}`}
           onClick={onItemClick}

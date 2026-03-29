@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { FOOTER_NAV_LEFT, FOOTER_NAV_RIGHT, FOOTER_CONTENT } from "@/app/mock/constants";
+import { FOOTER_NAV_LEFT, FOOTER_NAV_RIGHT, FOOTER_CONTENT, ROUTES } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Footer.module.css";
 import { NavLink } from "@/app/shared/ui/NavLink";
 import SocialLinks from "../links/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="w-full bg-background px-4 py-12 md:py-20">
+    <footer id={ROUTES.footer} className="w-full bg-background px-4 py-12 md:py-20">
       <div className="mx-auto w-full max-w-full sm:max-w-8/10">
         <div className={styles.divider} />
 
@@ -62,7 +62,7 @@ const Footer = () => {
             <div className="flex flex-col gap-0 min-w-40">
               {FOOTER_NAV_LEFT.map((item, i) => (
                 <NavLink
-                  key={item.label}
+                  key={item.id}
                   href={item.href}
                   className={`
                     ${styles.navItem}
@@ -78,7 +78,7 @@ const Footer = () => {
             <div className="flex flex-col gap-0 min-w-40">
               {FOOTER_NAV_RIGHT.map((item, i) => (
                 <NavLink
-                  key={item.label}
+                  key={item.id}
                   href={item.href}
                   className={`
                     ${styles.navItem}

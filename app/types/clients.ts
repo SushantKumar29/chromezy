@@ -1,4 +1,5 @@
 export interface ClientCardProps {
+  quoteIcon: string;
   client: {
     quote: string;
     name: string;
