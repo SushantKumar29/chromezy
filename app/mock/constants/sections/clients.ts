@@ -1,10 +1,14 @@
-import { ICON_BASE, IMAGE_BASE } from "./urls";
+import { ICON_BASE, IMAGE_BASE } from "../urls";
+
+export const CLIENT_QUOTE_ICON = `${ICON_BASE}/bi_quote.svg`;
 
 export const CLIENTS_CONTENT = {
   title: "Our Happy Clients",
   subtitle: "Dummy ipsum dolor sit amet, consectetur adipiscing elit",
+  quoteIcon: CLIENT_QUOTE_ICON,
   clients: [
     {
+      id: "client-1",
       quote:
         "We are Campion Savings Club based in Zimbabwe, South Africa, UK, USA and Australia. Chromezy is very professional, efficient, and reliable.",
       name: "JEFTA MUGWENI",
@@ -17,6 +21,7 @@ export const CLIENTS_CONTENT = {
       selected: false,
     },
     {
+      id: "client-2",
       quote:
         "Highly responsive with keen attention to detail. Assisted in building my e-commerce platform, mapping transformative areas, resulting in exceptional customer experience.",
       name: "BRANDON LAU",
@@ -29,6 +34,7 @@ export const CLIENTS_CONTENT = {
       selected: true,
     },
     {
+      id: "client-3",
       quote:
         "They are swift to respond and implement faster. Thanks to Chromezy for providing expert developers and on-time delivery to help scale our Cloud-based ERP SaaS solution.",
       name: "MARC DOLLON",
@@ -41,6 +47,7 @@ export const CLIENTS_CONTENT = {
       selected: false,
     },
     {
+      id: "client-4",
       quote:
         "I'm thrilled with Chromezy's work. They developed inventory management, AI-powered demand forecasting, and smart route optimization on time and affordably.",
       name: "JEET OBERAI",
@@ -53,7 +60,4 @@ export const CLIENTS_CONTENT = {
       selected: false,
     },
   ],
-  icons: {
-    quote: `${ICON_BASE}/bi_quote.svg`,
-  },
 };

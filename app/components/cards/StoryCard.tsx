@@ -1,9 +1,8 @@
 import Image from "next/image";
 import styles from "@/app/styles/sections/Stories.module.css";
-import { STORIES_CONTENT } from "@/app/mock/constants";
 import { StoryCardProps } from "@/app/types";
 
-const StoryCard = ({ card, large = true }: StoryCardProps) => {
+const StoryCard = ({ badgeText, linkIcon, card, large = true }: StoryCardProps) => {
   return (
     <div className={styles.card}>
       <div className={`${styles.imageContainer} ${large ? styles.imageLarge : styles.imageSmall}`}>
@@ -16,7 +15,7 @@ const StoryCard = ({ card, large = true }: StoryCardProps) => {
         />
 
         <div className={styles.badge}>
-          <span className={styles.badgeText}>{STORIES_CONTENT.badge}</span>
+          <span className={styles.badgeText}>{badgeText}</span>
         </div>
 
         <button
@@ -25,7 +24,7 @@ const StoryCard = ({ card, large = true }: StoryCardProps) => {
           className={styles.linkButton}
           aria-label="viewStory"
         >
-          <Image src={STORIES_CONTENT.linkIcon} alt="View More" width={35} height={35} />
+          <Image src={linkIcon} alt="View More" width={35} height={35} />
         </button>
       </div>
 

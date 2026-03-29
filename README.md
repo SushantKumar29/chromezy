@@ -31,10 +31,17 @@ cd chromezy
 npm install
 ```
 
-3. Running the application
+3. Set up environment variables:
+
+```
+cp .env.example .env.local
+```
+
+4. Running the application
 
 ```
 npm run dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -83,12 +90,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Available Scripts
 
 ```
-npm run dev         // Starts the development server with hot reload
-npm run build       // Creates an optimized production build
-npm start           // Starts the production server (requires build first)
-npm run lint        // Runs ESLint to check code quality
-npm run test        // Executes Jest test suite
-npm run test:watch  // Runs tests in watch mode for development
+npm run dev // Starts the development server with hot reload
+npm run build // Creates an optimized production build
+npm start // Starts the production server (requires build first)
+npm run lint // Runs ESLint to check code quality
+npm run test // Executes Jest test suite
+npm run test:watch // Runs tests in watch mode for development
+
 ```
 
 ## Folder Structure:
@@ -99,45 +107,52 @@ chromezy/
 │ └── workflows/
 │ └── ci.yml # GitHub Actions CI/CD configuration
 │
-├── app/ # Next.js App Router
-│ ├── layout.tsx # Root layout
-│ ├── page.tsx # Home page
-│ ├── globals.css # Global styles
-│ ├── not-found.tsx # 404 page
-│ │
-│ ├── **tests**/ # Jest test files
-│ │ ├── section/
-│ │ ├── utils/
-│ │ └── ...
-│ │
-│ ├── components/ # Reusable React components
-│ │ └── ...
-│ │
-│ ├── lib/ # Helper functions
-│ │ └── ...
-│ │
-│ ├── shared/ # Shared components
-│ │ ├── ui/ # Reusable UI components
-│ │ └── ...
-│ │
-│ ├── utils/ # Utility functions
-│ │ └── ...
-│ │
-│ ├── types/ # TypeScript type definitions
-│ │ └── ...
-│ │
-│ └── styles/ # Modular styles
-│ └── ...
+├── .husky/ # Git hooks
+│ ├── pre-commit
+│ └── pre-push
+│
+├── app
+│   ├── layout.tsx # Root layout
+│   ├── not-found.tsx # 404 page
+│   ├── page.tsx # Home page
+│   ├── globals.css # Global styles
+│   ├── robots.ts
+│   ├── sitemap.ts
+│   ├── components
+│   │   ├── cards
+│   │   ├── forms
+│   │   ├── links
+│   │   ├── sections
+│   ├── lib
+│   │   └── validations
+│   ├── mock
+│   │   └── constants
+│   ├── shared
+│   │   └── ui
+│   ├── styles # Modular CSS styles
+│   │   ├── cards
+│   │   ├── sections
+│   │   └── ui
+│   ├── **tests** # Jest test files
+│   │   ├── forms
+│   │   ├── pages
+│   │   ├── sections
+│   │   └── ui
+│   ├── types # TypeScript type definitions
+│   └── utils # Utility functions
 │
 ├── public/ # Static assets
-│ └── ...
+│ └── assets/
+│ └── screenshots/ # README screenshots
 │
 ├── jest.config.ts # Jest configuration
-├── next.config.js # Next.js configuration
+├── next.config.ts # Next.js configuration
 ├── tsconfig.json # TypeScript configuration
 ├── package.json # Project dependencies and scripts
 └── README.md # Project documentation
 ```
+
+**Note**: For the most up-to-date folder structure, run `tree -I 'node_modules' -L 3` in the project root.
 
 ## Testing
 
@@ -148,13 +163,17 @@ Running Tests
 # Run all tests
 
 ```
+
 npm run test
+
 ```
 
 # Run tests in watch mode
 
 ```
+
 npm run test:watch
+
 ```
 
 ## CI/CD Pipeline
@@ -171,7 +190,29 @@ Pull requests targeting main and development
 - Run ESLint
 - Execute test suite
 
+## Troubleshooting
+
+### SWC Platform-Specific Package for CI
+
+When running tests in a CI environment (like GitHub Actions), you might encounter the following error:
+
+```
+Module next/dist/build/swc/jest-transformer.js in the transform option was not found
+```
+
+**Why this happens:**  
+Next.js uses SWC (Speedy Web Compiler) for fast compilation. The SWC package is platform-specific (`@next/swc-linux-x64-gnu` for Linux, `@next/swc-darwin-x64` for macOS, etc.).
+While Next.js automatically downloads the correct package during development, CI environments sometimes fail to resolve the correct transformer path.
+
+**The fix:**  
+Install the platform-specific SWC package for your CI environment (Linux):
+
+```
+npm install -D @next/swc-linux-x64-gnu
+```
+
 ## License
 
-Copyright (c) 2026 Sushant Kumar
+Copyright (c) 2026 Sushant Kumar.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy

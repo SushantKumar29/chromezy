@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TECHNOLOGIES_CONTENT } from "@/app/mock/constants";
+import { ROUTES, TECHNOLOGIES_CONTENT } from "@/app/mock/constants";
 import TechTag from "@/app/components/cards/TechTag";
 import styles from "@/app/styles/sections/Technologies.module.css";
 import MotionWrapper from "../wrappers/MotionWrapper";
@@ -12,7 +12,7 @@ const Technologies = () => {
   return (
     <MotionWrapper
       as="section"
-      id="technologies"
+      id={ROUTES.technologies}
       motionProps={{
         initial: { opacity: 0, y: 22 },
         whileInView: { opacity: 1, y: 0 },
@@ -50,7 +50,7 @@ const Technologies = () => {
           <div className={styles.rightSection}>
             {categories.map((cat, i) => (
               <MotionWrapper
-                key={cat.n}
+                key={cat.id}
                 motionProps={{
                   initial: { opacity: 0, y: 12 },
                   whileInView: { opacity: 1, y: 0 },
@@ -63,7 +63,7 @@ const Technologies = () => {
                 }}
                 className={styles.categoryItem}
               >
-                <span className={styles.categoryNumber}>{cat.n}</span>
+                <span className={styles.categoryNumber}>{cat.id}</span>
 
                 <div className="flex-1 min-w-0">
                   <h3 className={styles.categoryTitle}>{cat.title}</h3>

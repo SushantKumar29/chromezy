@@ -5,13 +5,11 @@ import { INSIGHTS_CONTENT } from "@/app/mock/constants";
 import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
 
 /*
-  Here we are testing the Insights component
   This test includes:
   - Rendering title and subtitle
   - Rendering the cards with correct props
 */
 
-// Here we are mocking the InsightCard component because we are rendering InsightCards in the Insights component
 jest.mock("../../components/cards/InsightCard", () => {
   interface MockInsightCardProps {
     insight: {
@@ -32,7 +30,6 @@ jest.mock("../../components/cards/InsightCard", () => {
   };
 });
 
-// Here we are mocking the MotionWrapper component because the elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
@@ -55,7 +52,6 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
 });
 
 describe("Insights", () => {
-  // Here we are checking the title and subtitle
   it("renders title and subtitle", () => {
     render(<Insights />);
 
@@ -63,7 +59,6 @@ describe("Insights", () => {
     expect(screen.getByText(INSIGHTS_CONTENT.subtitle)).toBeInTheDocument();
   });
 
-  // Here we are checking if all the cards are rendered properly
   it("renders all insight cards", () => {
     render(<Insights />);
 
@@ -79,7 +74,6 @@ describe("Insights", () => {
     });
   });
 
-  // Here we are checking if the MotionWrapper has the correct motion props
   it("renders MotionWrapper for section with correct motion props", () => {
     render(<Insights />);
 

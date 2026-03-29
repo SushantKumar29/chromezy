@@ -7,18 +7,15 @@ import { ProductCardProps } from "@/app/types";
 import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
 
 /*
-  Here we are testing the Hero component
   This test includes:
   - Rendering text elements
   - Rendering background image
   - Rendering the stats
 */
 
-// Here we are mocking the next/image because the Products section has a background image
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: ImageProps) => {
-    // Here we will get a warning about the fill attribute, so we are converting the boolean fill to string to avoid React warning
     const imgProps: Record<string, unknown> = { ...props };
     if (imgProps.fill === true) {
       imgProps.fill = "true";
@@ -27,7 +24,6 @@ jest.mock("next/image", () => ({
   },
 }));
 
-// We are mocking a product card component because the Products section has product cards
 jest.mock("../../components/cards/ProductCard", () => {
   return function MockProductCard({ title, description, cta, tone }: ProductCardProps) {
     return (
@@ -40,7 +36,6 @@ jest.mock("../../components/cards/ProductCard", () => {
   };
 });
 
-// Here we are mocking the MotionWrapper component because the elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
@@ -64,7 +59,6 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-// These are some mock CSS classes for the texts and background image
 jest.mock("@/app/styles/sections/Products.module.css", () => ({
   bgBallImage: "mock-bg-ball-image",
   title: "mock-title",
@@ -72,7 +66,6 @@ jest.mock("@/app/styles/sections/Products.module.css", () => ({
 }));
 
 describe("Products", () => {
-  // Here we are rendering the title and descriptions
   it("renders title and description", () => {
     render(<Products />);
 
@@ -86,7 +79,6 @@ describe("Products", () => {
     expect(description).toHaveClass("mock-description");
   });
 
-  // Here we are checking if the rendered cards matches the number of cards to be rendered
   it("renders all product cards", () => {
     render(<Products />);
 
@@ -94,7 +86,6 @@ describe("Products", () => {
     expect(cards).toHaveLength(PRODUCTS_CONTENT.cards.length);
   });
 
-  // Here we are checking if the rendered cards have the correct props
   it("passes correct props to each ProductCard", () => {
     render(<Products />);
 
@@ -107,7 +98,6 @@ describe("Products", () => {
     });
   });
 
-  // Here we are checking the background image
   it("renders background ball image", () => {
     render(<Products />);
 
@@ -117,7 +107,6 @@ describe("Products", () => {
     expect(ballImage).toHaveClass("mock-bg-ball-image");
   });
 
-  // Here we are checking if the MotionWrapper has the correct motion props
   it("renders MotionWrapper with correct motion props", () => {
     render(<Products />);
 

@@ -1,10 +1,10 @@
-import { BRAND_LOGOS } from "@/app/mock/constants";
+import { BRAND_LOGOS, ROUTES } from "@/app/mock/constants";
 import Image from "next/image";
 import styles from "@/app/styles/sections/BrandStrip.module.css";
 
 const BrandStrip = () => {
   return (
-    <section id="home" className="w-full px-4 py-11 my-12">
+    <section id={ROUTES.brands} className="w-full px-4 py-11 my-12">
       <div className="mx-auto w-full max-w-7xl">
         <div className={styles.divider} />
         <div
@@ -19,8 +19,8 @@ const BrandStrip = () => {
               <Image
                 src={src}
                 alt={`Client logo ${i + 1}`}
-                width={0}
-                height={0}
+                width={200}
+                height={200}
                 className={styles.image}
               />
             </div>

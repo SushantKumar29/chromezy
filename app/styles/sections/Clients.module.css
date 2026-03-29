@@ -177,8 +177,8 @@
 
 .clientLogo {
   object-fit: contain;
-  max-width: 5.625rem;
-  max-height: 3.75rem;
+  width: auto;
+  height: auto;
 }
 
 /* Mobile dots */

@@ -1,17 +1,15 @@
 import { MetadataRoute } from "next";
 
 /*
-  This is the robots.ts file which helps to:
+  Robots.ts file which helps to:
   - Creates /robots.txt at our domain root
   - Tells search engines: "For OUR ENTIRE SITE, here are the rules"
   - Controls crawling across all pages
   - Points to our sitemap location
-
 */
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl =
-    process.env.NODE_ENV === "production" ? "https://chromezy.com" : "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL! || "https://chromezy.com";
 
   return {
     rules: {
@@ -19,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/", "/private/"],
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: `${siteUrl!}/sitemap.xml`,
   };
 }

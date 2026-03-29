@@ -1,7 +1,7 @@
 "use client";
 
 import { MotionWrapperProps } from "@/app/types/motionWrapper";
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import { m } from "framer-motion";
 
 export function MotionWrapper({
   as = "div",
@@ -13,11 +13,9 @@ export function MotionWrapper({
   const MotionComponent = m[as as keyof typeof m] as React.ElementType;
 
   return (
-    <LazyMotion features={domAnimation}>
-      <MotionComponent className={className} {...motionProps} {...rest}>
-        {children}
-      </MotionComponent>
-    </LazyMotion>
+    <MotionComponent className={className} {...motionProps} {...rest}>
+      {children}
+    </MotionComponent>
   );
 }
 

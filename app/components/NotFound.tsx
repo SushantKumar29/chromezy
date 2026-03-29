@@ -1,8 +1,8 @@
-import { NOT_FOUUNT_CONTENT } from "../mock/constants/notFound";
+import { NOT_FOUND_CONTENT } from "../mock/constants";
 import { NavLink } from "../shared/ui/NavLink";
 
 export default function NotFoundComponent() {
-  const content = NOT_FOUUNT_CONTENT;
+  const content = NOT_FOUND_CONTENT;
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
       <div className="text-8xl font-bold text-primary mb-4">{content.code}</div>

@@ -7,14 +7,13 @@ import { ImageProps } from "next/image";
 import { Tag } from "@/app/types";
 
 /*
-  Here we are testing the Technologies component
   This test includes:
   - Rendering Spiral image
   - Rendering category numbers and titles
   - Rendering TechTag components
 */
 
-// Here we are mocking the next/image because the Technologies section has a image
+// Mock next/image - use a div instead of img to avoid ESLint warning
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: ImageProps) => {
@@ -23,7 +22,6 @@ jest.mock("next/image", () => ({
   },
 }));
 
-// Here we are mocking the TechTag component
 jest.mock("../../components/cards/TechTag", () => {
   return function MockTechTag({ label, icon }: Tag) {
     return (
@@ -35,7 +33,6 @@ jest.mock("../../components/cards/TechTag", () => {
   };
 });
 
-// Here we are mocking the MotionWrapper component because the elements are wrapped in it
 jest.mock("../../components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
@@ -58,7 +55,6 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
 });
 
 describe("Technologies", () => {
-  // Here we are checking if the Spiral image is rendered
   it("renders Spiral image", () => {
     render(<Technologies />);
 
@@ -67,17 +63,15 @@ describe("Technologies", () => {
     expect(spiralImage).toHaveAttribute("src", TECHNOLOGIES_CONTENT.images.spiralImg);
   });
 
-  // Here we are checking if the category numbers and titles are rendered
   it("renders correct category numbers with titles", () => {
     render(<Technologies />);
 
     TECHNOLOGIES_CONTENT.categories.forEach((category) => {
-      expect(screen.getByText(category.n)).toBeInTheDocument();
+      expect(screen.getByText(category.id)).toBeInTheDocument();
       expect(screen.getByText(category.title)).toBeInTheDocument();
     });
   });
 
-  // Here we are checking if the rendered tags matches the number of tags to be rendered
   it("passes correct tag data to TechTag components", () => {
     render(<Technologies />);
 
@@ -86,7 +80,7 @@ describe("Technologies", () => {
 
     allTags.forEach((tag, index) => {
       expect(renderedTags[index]).toHaveTextContent(tag.label);
-      // Here if the tag has icon, then we are checking the icon, else we are checking that there is no icon
+
       if (tag.icon) {
         expect(renderedTags[index]).toHaveAttribute("data-icon", "has-icon");
         const img = renderedTags[index].querySelector("img");
@@ -97,7 +91,6 @@ describe("Technologies", () => {
     });
   });
 
-  // Here we are checking if the MotionWrapper has the correct motion props
   it("renders MotionWrapper for section with correct motion props", () => {
     render(<Technologies />);
 

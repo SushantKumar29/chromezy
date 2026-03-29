@@ -2,7 +2,7 @@
 
 import { ArrowRightIcon } from "@/app/shared/ui/Icons";
 import { useRef, useEffect } from "react";
-import { CLIENTS_CONTENT } from "@/app/mock/constants";
+import { CLIENTS_CONTENT, ROUTES } from "@/app/mock/constants";
 import ClientCard from "@/app/components/cards/ClientCard";
 import styles from "@/app/styles/sections/Clients.module.css";
 import { getScrollPosition, scrollCard } from "@/app/utils/cardUtils";
@@ -10,7 +10,7 @@ import MotionWrapper from "../wrappers/MotionWrapper";
 
 const Clients = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { title, subtitle, clients } = CLIENTS_CONTENT;
+  const { title, subtitle, quoteIcon, clients } = CLIENTS_CONTENT;
 
   const selectedIndex = clients.findIndex((client) => client.selected);
 
@@ -26,7 +26,7 @@ const Clients = () => {
   return (
     <MotionWrapper
       as="section"
-      id="clients"
+      id={ROUTES.clients}
       className={`relative px-4 py-12 md:py-20 ${styles.section}`}
       motionProps={{
         initial: { opacity: 0, y: 40 },
@@ -67,8 +67,8 @@ const Clients = () => {
 
       <div className="mx-auto w-full xl:w-8/10">
         <div ref={scrollRef} className={styles.scrollContainer}>
-          {clients.map((client, idx) => (
-            <ClientCard key={idx} client={client} />
+          {clients.map((client) => (
+            <ClientCard key={client.id} quoteIcon={quoteIcon} client={client} />
           ))}
         </div>
       </div>

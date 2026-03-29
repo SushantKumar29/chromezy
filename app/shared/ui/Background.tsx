@@ -5,15 +5,10 @@ import styles from "@/app/styles/sections/Background.module.css";
 import { IMAGE_BASE } from "@/app/mock/constants";
 import MotionWrapper from "@/app/components/wrappers/MotionWrapper";
 
-/* 
-  This is the background component which is used in the Home page
-  Here some animated background images are rendered
-*/
-
 const Background = () => {
-  const { scrollY } = useScroll(); // This hook is used to get/set the scroll position
+  const { scrollY } = useScroll(); // Get/set the scroll position
 
-  // Here we are using framer-motion hooks to animate the background images
+  // framer-motion hooks to animate the background images
   const triangleX = useTransform(scrollY, [0, 3000], [-300, -150]);
   const triangleScale = useTransform(scrollY, [0, 3000], [1, 0.75]);
   const triangleY = useTransform(scrollY, [0, 3000], [0, -100]);
@@ -55,10 +50,10 @@ const Background = () => {
             alt="Triangle"
             fill
             sizes="(max-width: 768px) 300px, (max-width: 1200px) 40vw, 620px"
-            quality={75} // This option optimize quality vs file size
+            quality={75} // Optimize quality vs file size
             className={styles.triangleImage}
-            loading="eager" // This option explicitly set eager loading
-            fetchPriority="high" // THis option explicitly set high fetch priority
+            loading="eager" // Explicitly set eager loading
+            fetchPriority="high" // Explicitly set high fetch priority
           />
         </div>
       </MotionWrapper>
@@ -79,10 +74,10 @@ const Background = () => {
             alt="Main Ball"
             fill
             sizes="(max-width: 768px) 300px, (max-width: 1200px) 40vw, 620px"
-            quality={75} // This option optimize quality vs file size
+            quality={75} // Optimize quality vs file size
             className={styles.ballImage}
-            loading="eager" // This option explicitly set eager loading
-            fetchPriority="auto" // This option set lower priority than triangle
+            loading="eager" // Explicitly set eager loading
+            fetchPriority="auto" // Set lower priority than triangle
           />
         </div>
       </MotionWrapper>

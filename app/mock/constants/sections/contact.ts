@@ -1,4 +1,4 @@
-import { ICON_BASE, IMAGE_BASE } from "./urls";
+import { ICON_BASE, IMAGE_BASE } from "../urls";
 
 export const CONTACT_CONTENT = {
   title: "Contact Us",

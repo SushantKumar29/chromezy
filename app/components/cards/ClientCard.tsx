@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { CLIENTS_CONTENT } from "@/app/mock/constants";
 import styles from "@/app/styles/sections/Clients.module.css";
 import { ClientCardProps } from "@/app/types";
 
-const ClientCard = ({ client }: ClientCardProps) => {
+const ClientCard = ({ client, quoteIcon }: ClientCardProps) => {
   const cardClass = client.selected
     ? `${styles.clientCard} ${styles.clientCardSelected}`
     : `${styles.clientCard} ${styles.clientCardDefault}`;
@@ -18,7 +17,7 @@ const ClientCard = ({ client }: ClientCardProps) => {
         <Image
           width={24}
           height={24}
-          src={CLIENTS_CONTENT.icons.quote}
+          src={quoteIcon}
           alt="quote icon"
           className={styles.quoteIcon}
         />

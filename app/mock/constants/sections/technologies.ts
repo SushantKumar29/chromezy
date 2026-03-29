@@ -1,4 +1,4 @@
-import { ICON_BASE, IMAGE_BASE } from "./urls";
+import { ICON_BASE, IMAGE_BASE } from "../urls";
 
 export const TECHNOLOGIES_CONTENT = {
   title: {
@@ -11,7 +11,7 @@ export const TECHNOLOGIES_CONTENT = {
     "Discover the impact of bespoke digital solutions tailored precisely to your business's distinct requirements.",
   categories: [
     {
-      n: "01",
+      id: "01",
       title: "Web App Development",
       tags: [
         { label: "React", icon: `${ICON_BASE}/technologies/react.svg` },
@@ -25,7 +25,7 @@ export const TECHNOLOGIES_CONTENT = {
       ],
     },
     {
-      n: "02",
+      id: "02",
       title: "Mobile App Development",
       tags: [
         { label: "Flutter", icon: `${ICON_BASE}/technologies/flutter.svg` },
@@ -37,12 +37,12 @@ export const TECHNOLOGIES_CONTENT = {
       ],
     },
     {
-      n: "03",
+      id: "03",
       title: "E-commerce",
       tags: [{ label: "Shopify" }, { label: "WooCommerce" }, { label: "Prestashop" }],
     },
     {
-      n: "04",
+      id: "04",
       title: "Analytics",
       tags: [
         { label: "Python", icon: `${ICON_BASE}/technologies/python.svg` },
@@ -53,7 +53,7 @@ export const TECHNOLOGIES_CONTENT = {
       ],
     },
     {
-      n: "05",
+      id: "05",
       title: "Data & Cloud",
       tags: [
         { label: "Azure", icon: `${ICON_BASE}/technologies/azure.svg` },
@@ -66,7 +66,6 @@ export const TECHNOLOGIES_CONTENT = {
     },
   ],
   images: {
-    strippedBall: `${IMAGE_BASE}/technologies/stripped-ball.svg`,
     spiralImg: `${IMAGE_BASE}/technologies/spiral-transparent.png`,
   },
 };
