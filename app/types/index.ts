@@ -4,5 +4,4 @@ export * from "./contact";
 export * from "./products";
 export * from "./stories";
 export * from "./technologies";
-export * from "./preloader";
 export * from "./icons";
