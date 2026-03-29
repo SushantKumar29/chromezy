@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 // Metadata here because of the SEO reasons
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL! || "https://chromezy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

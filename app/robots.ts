@@ -9,12 +9,14 @@ import { MetadataRoute } from "next";
 */
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL! || "https://chromezy.com";
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
       disallow: ["/api/", "/admin/", "/private/"],
     },
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_UR!}/sitemap.xml`,
+    sitemap: `${siteUrl!}/sitemap.xml`,
   };
 }
