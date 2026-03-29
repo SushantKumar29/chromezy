@@ -190,6 +190,27 @@ Pull requests targeting main and development
 - Run ESLint
 - Execute test suite
 
+## Troubleshooting
+
+### SWC Platform-Specific Package for CI
+
+When running tests in a CI environment (like GitHub Actions), you might encounter the following error:
+
+```
+Module next/dist/build/swc/jest-transformer.js in the transform option was not found
+```
+
+**Why this happens:**  
+Next.js uses SWC (Speedy Web Compiler) for fast compilation. The SWC package is platform-specific (`@next/swc-linux-x64-gnu` for Linux, `@next/swc-darwin-x64` for macOS, etc.).
+While Next.js automatically downloads the correct package during development, CI environments sometimes fail to resolve the correct transformer path.
+
+**The fix:**  
+Install the platform-specific SWC package for your CI environment (Linux):
+
+```
+npm install -D @next/swc-linux-x64-gnu
+```
+
 ## License
 
 Copyright (c) 2026 Sushant Kumar.
