@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Products from "@/app/components/sections/Products";
 import { PRODUCTS_CONTENT, IMAGE_BASE } from "@/app/mock/constants";
@@ -24,19 +23,19 @@ jest.mock("next/image", () => ({
   },
 }));
 
-jest.mock("../../components/cards/ProductCard", () => {
+jest.mock("@/app/components/cards/ProductCard", () => {
   return function MockProductCard({ title, description, cta, tone }: ProductCardProps) {
     return (
       <div data-testid="product-card" data-tone={tone}>
         <h3>{title}</h3>
         <p>{description}</p>
-        <button>{cta}</button>
+        <button type="button">{cta}</button>
       </div>
     );
   };
 });
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,

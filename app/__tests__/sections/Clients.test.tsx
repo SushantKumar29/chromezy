@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Clients from "@/app/components/sections/Clients";
 import { CLIENTS_CONTENT } from "@/app/mock/constants";
@@ -16,7 +15,7 @@ beforeAll(() => {
   Element.prototype.scrollTo = jest.fn();
 });
 
-jest.mock("../../components/cards/ClientCard", () => {
+jest.mock("@/app/components/cards/ClientCard", () => {
   return function MockClientCard({ client }: ClientCardProps) {
     return (
       <div data-testid="client-card" data-selected={client.selected}>
@@ -31,7 +30,7 @@ jest.mock("../../components/cards/ClientCard", () => {
   };
 });
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,
@@ -55,7 +54,7 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
 const mockScrollCard = jest.fn();
 const mockGetScrollPosition = jest.fn();
 
-jest.mock("../../utils/cardUtils", () => ({
+jest.mock("@/app/utils/cardUtils", () => ({
   getScrollPosition: (...args: unknown[]) => mockGetScrollPosition(...args),
   scrollCard: (...args: unknown[]) => mockScrollCard(...args),
 }));

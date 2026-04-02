@@ -20,7 +20,7 @@ const Insights = () => {
       }}
       className={styles.section}
     >
-      <div className="mx-auto w-full max-w-full sm:max-w-8/10">
+      <div className="mx-auto w-full max-w-full sm:container">
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.subtitle}>{subtitle}</p>
 

@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Hero from "@/app/components/sections/Hero";
 import { HERO_CONTENT, IMAGE_BASE } from "@/app/mock/constants";
@@ -20,7 +19,7 @@ jest.mock("next/image", () => ({
   },
 }));
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,
@@ -39,7 +38,7 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-jest.mock("../../styles/sections/Hero.module.css", () => ({
+jest.mock("@/app/styles/sections/Hero.module.css", () => ({
   bgFlower: "mock-bg-flower",
   highlightCyan: "mock-highlight-cyan",
   highlightBlue: "mock-highlight-blue",

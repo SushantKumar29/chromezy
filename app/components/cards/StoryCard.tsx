@@ -19,10 +19,11 @@ const StoryCard = ({ badgeText, linkIcon, card, large = true }: StoryCardProps) 
         </div>
 
         <button
-          id="viewStory"
-          name="View Story"
+          id={card.id}
+          name={`View: ${card.title}`}
+          type="button"
           className={styles.linkButton}
-          aria-label="viewStory"
+          aria-label={card.id}
         >
           <Image src={linkIcon} alt="View More" width={35} height={35} />
         </button>

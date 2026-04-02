@@ -6,7 +6,9 @@ export const contactFormSchema = z.object({
   phone: z
     .string()
     .min(1, "Phone number is required")
-    .regex(/^[\d\s\-+()]+$/, "Please enter a valid phone number"),
+    .min(10, "Please enter a 10-digit phone number")
+    .max(10, "Please enter a 10-digit phone number")
+    .regex(/^\d{10}/, "Please enter a 10-digit phone number"),
   lookingFor: z
     .string()
     .min(1, "This field is required")

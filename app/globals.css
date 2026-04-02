@@ -3,10 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --text-primary: #ffffff;
-  --text-secondary: #ffffffe6;
-  --text-tertiary: #ffffffcc;
-  --text-faded: #ffffff66;
+  --primary: #ffffff;
+  --secondary: #ffffffe6;
+  --tertiary: #ffffffcc;
+  --faded: #ffffff66;
 }
 
 @theme inline {
@@ -14,6 +14,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sora), sans-serif;
   --font-mono: var(--font-inter), monospace;
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-faded: var(--faded);
 }
 
 @media (prefers-color-scheme: dark) {

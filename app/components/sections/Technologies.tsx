@@ -19,9 +19,9 @@ const Technologies = () => {
         viewport: { once: true, amount: 0.15 },
         transition: { duration: 0.8, ease: "easeOut" },
       }}
-      className={`${styles.section}`}
+      className={styles.section}
     >
-      <div className="mx-auto w-full max-w-full sm:max-w-8/10 relative z-10">
+      <div className="mx-auto w-full max-w-full sm:container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[480px_1fr] gap-2 md:gap-10 lg:gap-30 justify-between">
           <div className={styles.leftCard}>
             <h2 className={styles.leftCardTitle}>

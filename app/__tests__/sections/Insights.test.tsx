@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Insights from "@/app/components/sections/Insights";
 import { INSIGHTS_CONTENT } from "@/app/mock/constants";
@@ -10,7 +9,7 @@ import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
   - Rendering the cards with correct props
 */
 
-jest.mock("../../components/cards/InsightCard", () => {
+jest.mock("@/app/components/cards/InsightCard", () => {
   interface MockInsightCardProps {
     insight: {
       title: string;
@@ -30,7 +29,7 @@ jest.mock("../../components/cards/InsightCard", () => {
   };
 });
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,

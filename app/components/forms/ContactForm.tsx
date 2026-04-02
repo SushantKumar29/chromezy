@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,8 +18,8 @@ import { submitContactForm } from "@/app/effects/contactApi";
 const ContactForm = () => {
   const { form, images } = CONTACT_CONTENT;
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const {
     register,
@@ -37,6 +37,15 @@ const ContactForm = () => {
     },
   });
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
@@ -49,11 +58,14 @@ const ContactForm = () => {
       console.error(error);
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setSubmitStatus("idle");
       }, 3000);
     }
   };
+
+  // Helper to get error ID for aria-describedby
+  const getErrorId = (fieldName: string) => `${fieldName}-error`;
 
   return (
     <div className={styles.formWrapper}>
@@ -70,7 +82,8 @@ const ContactForm = () => {
       <div className={styles.formContent}>
         <h3 className={styles.formTitle}>{form.title}</h3>
 
-        <div className={styles.statusContainer}>
+        {/* ARIA live region for announcements */}
+        <div className={styles.statusContainer} aria-live="polite" role="status">
           {submitStatus === "success" && (
             <div className={styles.successMessage}>{form.successMessage}</div>
           )}
@@ -80,37 +93,56 @@ const ContactForm = () => {
           )}
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form} noValidate>
           <div className={styles.formFields}>
             {form.fields.map(({ label, type, name, placeholder }) => {
               const fieldName = name as keyof ContactFormData;
               const error = errors[fieldName];
+              const errorId = getErrorId(name);
+              const inputId = `contact-${name}`;
 
               return (
                 <div key={name} className={styles.formField}>
-                  <label className={styles.formLabel}>{label}</label>
+                  <label htmlFor={inputId} className={styles.formLabel}>
+                    {label}
+                  </label>
                   <input
+                    id={inputId}
                     type={type}
                     {...register(fieldName)}
                     className={`${styles.formInput} ${error ? styles.inputError : ""}`}
                     placeholder={placeholder}
                     aria-invalid={error ? "true" : "false"}
+                    aria-describedby={error ? errorId : undefined}
                   />
-                  <p className={styles.errorText}>{error?.message || ""}</p>
+                  <p id={errorId} className={styles.errorText} role="alert" aria-live="polite">
+                    {error?.message || ""}
+                  </p>
                 </div>
               );
             })}
 
             <div className={styles.formField}>
-              <label className={styles.formLabel}>{form.textareaLabel}</label>
+              <label htmlFor="contact-message" className={styles.formLabel}>
+                {form.textareaLabel}
+              </label>
               <textarea
+                id="contact-message"
                 {...register("message")}
                 rows={4}
                 className={`${styles.formTextarea} ${errors.message ? styles.inputError : ""}`}
                 placeholder={form.textareaPlaceholder}
                 aria-invalid={errors.message ? "true" : "false"}
+                aria-describedby={errors.message ? getErrorId("message") : undefined}
               />
-              <p className={styles.errorText}>{errors.message?.message || ""}</p>
+              <p
+                id={getErrorId("message")}
+                className={styles.errorText}
+                role="alert"
+                aria-live="polite"
+              >
+                {errors.message?.message || ""}
+              </p>
             </div>
           </div>
 
@@ -120,7 +152,8 @@ const ContactForm = () => {
             type="submit"
             className={styles.submitButton}
             disabled={isSubmitting}
-            aria-label="submitContactForm"
+            aria-label={isSubmitting ? "Sending message" : "Submit contact form"}
+            aria-busy={isSubmitting}
           >
             {isSubmitting ? "Sending..." : form.submitButton}
           </button>

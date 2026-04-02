@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Background from "@/app/shared/ui/Background";
 import { MotionWrapperProps } from "@/app/types/motionWrapper";
@@ -12,7 +11,7 @@ import { MotionWrapperProps } from "@/app/types/motionWrapper";
 
 */
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({ children, className, ...rest }: MotionWrapperProps) {
     return (
       <div data-testid="motion-wrapper" className={className} {...rest}>
@@ -22,11 +21,11 @@ jest.mock("../../components/wrappers/MotionWrapper", () => {
   };
 });
 
-jest.mock("../../mock/constants", () => ({
+jest.mock("@/app/mock/constants", () => ({
   IMAGE_BASE: "/test-images",
 }));
 
-jest.mock("../../styles/sections/Background.module.css", () => ({
+jest.mock("@/app/styles/sections/Background.module.css", () => ({
   patternBackground: "mock-patternBackground",
   triangleImage: "mock-triangleImage",
   ballImage: "mock-ballImage",

@@ -15,7 +15,7 @@ const Products = () => {
     <MotionWrapper
       as="section"
       id={ROUTES.products}
-      className={`relative px-4 py-12 md:py-20 ${styles.section}`}
+      className={styles.section}
       motionProps={{
         initial: { opacity: 0, y: 40 },
         whileInView: { opacity: 1, y: 0 },
@@ -35,17 +35,17 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="mx-auto max-w-full sm:max-w-8/10">
-        <div className="max-w-155">
+      <div className="mx-auto max-w-full sm:container">
+        <div className="max-w-[620px]">
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.description}>{description}</p>
         </div>
       </div>
 
-      <div className="mx-auto w-full xl:w-8/10 mt-16 overflow-x-auto pb-6 hide-scrollbar">
+      <div className="mx-auto w-full xl:container mt-16 overflow-x-auto pb-6 hide-scrollbar">
         <div className="flex gap-4">
           {cards.map((card) => (
-            <div key={card.id} className="flex-1 min-w-70">
+            <div key={card.id} className="flex-1 min-w-[280px]">
               <ProductCard
                 {...(card as ProductCardProps)}
                 badgeText={badgeText}

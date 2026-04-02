@@ -8,15 +8,6 @@
   background-color: var(--brand-border-color);
 }
 
-.scrollContainer {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollContainer::-webkit-scrollbar {
-  display: none;
-}
-
 .imageContainer {
   position: relative;
   height: 3rem;
@@ -28,8 +19,4 @@
 .imageContainer:hover {
   opacity: 0.9;
   transition: opacity 0.2s ease;
-}
-
-.image {
-  object-fit: contain;
 }

@@ -27,7 +27,7 @@ const Clients = () => {
     <MotionWrapper
       as="section"
       id={ROUTES.clients}
-      className={`relative px-4 py-12 md:py-20 ${styles.section}`}
+      className={styles.section}
       motionProps={{
         initial: { opacity: 0, y: 40 },
         whileInView: { opacity: 1, y: 0 },
@@ -35,7 +35,7 @@ const Clients = () => {
         transition: { duration: 0.9 },
       }}
     >
-      <div className="mx-auto w-full max-w-full sm:max-w-8/10">
+      <div className="mx-auto w-full sm:container">
         <div className="flex items-end justify-between mb-10 md:mb-16">
           <div>
             <h2 className={styles.title}>{title}</h2>
@@ -65,7 +65,7 @@ const Clients = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-full xl:w-8/10">
+      <div className="mx-auto w-full xl:container">
         <div ref={scrollRef} className={styles.scrollContainer}>
           {clients.map((client) => (
             <ClientCard key={client.id} quoteIcon={quoteIcon} client={client} />

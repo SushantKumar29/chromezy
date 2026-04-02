@@ -11,7 +11,7 @@ import { render, screen, fireEvent, waitFor, act } from "@testing-library/react"
 */
 
 // Mock the API
-jest.mock("../../effects/contactApi", () => ({
+jest.mock("@/app/effects/contactApi", () => ({
   submitContactForm: jest.fn(),
 }));
 
@@ -36,7 +36,7 @@ describe("ContactForm", () => {
       render(<ContactForm />);
 
       expect(screen.getByText("Let's Talk!")).toBeInTheDocument();
-      expect(screen.getByRole("button", { name: /submitcontactform/i })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /submit contact form/i })).toBeInTheDocument();
       expect(screen.getByText("Send Request")).toBeInTheDocument();
 
       expect(screen.getByPlaceholderText("John Doe")).toBeInTheDocument();
@@ -49,16 +49,19 @@ describe("ContactForm", () => {
 
   describe("Validation of the Form fields", () => {
     const fillField = (placeholder: string, value: string) => {
-      fireEvent.input(screen.getByPlaceholderText(placeholder), { target: { value } });
+      const input = screen.getByPlaceholderText(placeholder);
+      fireEvent.input(input, { target: { value } });
     };
 
     it("shows all validation errors correctly", async () => {
       render(<ContactForm />);
 
+      // Submit empty form to trigger all validation errors
       await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /submitcontactform/i }));
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
       });
 
+      // Check initial required field errors
       await waitFor(() => {
         expect(screen.getByText("Name is required")).toBeInTheDocument();
         expect(screen.getByText("Email is required")).toBeInTheDocument();
@@ -67,48 +70,105 @@ describe("ContactForm", () => {
         expect(screen.getByText("Message is required")).toBeInTheDocument();
       });
 
+      // Fill valid data except email
       await act(async () => {
         fillField("John Doe", "John Smith");
-        fillField("+1 234 567 890", "+1234567890");
+        fillField("+1 234 567 890", "1234567890");
         fillField("e.g., Web Development", "Web Development");
         fillField("Tell us about your project...", "This is a test message that is long enough");
         fillField("john@example.com", "invalid-email");
       });
 
+      // Check email validation
       await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /submitcontactform/i }));
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
       });
 
       await waitFor(() => {
         expect(screen.getByText(/please enter a valid email/i)).toBeInTheDocument();
       });
 
+      // Test phone number validation with non-numeric
       await act(async () => {
         fillField("john@example.com", "john@example.com");
         fillField("+1 234 567 890", "abc");
       });
 
       await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /submitcontactform/i }));
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
       });
 
       await waitFor(() => {
-        expect(screen.getByText(/please enter a valid phone number/i)).toBeInTheDocument();
+        // Match the actual error message from the schema
+        expect(screen.getByText(/please enter a 10-digit phone number/i)).toBeInTheDocument();
       });
 
+      // Test minimum length validations
       await act(async () => {
         fillField("John Doe", "J");
-        fillField("+1 234 567 890", "+1234567890");
+        fillField("+1 234 567 890", "1234567890");
         fillField("Tell us about your project...", "Short");
       });
 
       await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /submitcontactform/i }));
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
       });
 
       await waitFor(() => {
         expect(screen.getByText("Name must be at least 2 characters")).toBeInTheDocument();
         expect(screen.getByText("Message must be at least 10 characters")).toBeInTheDocument();
+      });
+    });
+
+    it("validates phone number length correctly", async () => {
+      render(<ContactForm />);
+
+      // Fill valid data except phone
+      await act(async () => {
+        fillField("John Doe", "John Smith");
+        fillField("john@example.com", "john@example.com");
+        fillField("e.g., Web Development", "Web Development");
+        fillField("Tell us about your project...", "This is a test message that is long enough");
+      });
+
+      // Test phone with wrong length
+      await act(async () => {
+        fillField("+1 234 567 890", "12345");
+      });
+
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText(/please enter a 10-digit phone number/i)).toBeInTheDocument();
+      });
+
+      // Test phone with letters
+      await act(async () => {
+        fillField("+1 234 567 890", "abcdefghij");
+      });
+
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText(/please enter a 10-digit phone number/i)).toBeInTheDocument();
+      });
+
+      // Test valid phone
+      await act(async () => {
+        fillField("+1 234 567 890", "1234567890");
+      });
+
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: /submit contact form/i }));
+      });
+
+      // Phone error should disappear
+      await waitFor(() => {
+        expect(screen.queryByText(/please enter a 10-digit phone number/i)).not.toBeInTheDocument();
       });
     });
   });
@@ -122,7 +182,7 @@ describe("ContactForm", () => {
         target: { value: "john@example.com" },
       });
       fireEvent.input(screen.getByPlaceholderText("+1 234 567 890"), {
-        target: { value: "+1234567890" },
+        target: { value: "1234567890" },
       });
       fireEvent.input(screen.getByPlaceholderText("e.g., Web Development"), {
         target: { value: "Web Development" },
@@ -139,7 +199,7 @@ describe("ContactForm", () => {
       });
 
       render(<ContactForm />);
-      const submitButton = screen.getByRole("button", { name: /submitcontactform/i });
+      const submitButton = screen.getByRole("button", { name: /submit contact form/i });
 
       await act(async () => {
         fillValidForm();
@@ -150,7 +210,7 @@ describe("ContactForm", () => {
         expect(mockSubmitContactForm).toHaveBeenCalledWith({
           name: "John Smith",
           email: "john@example.com",
-          phone: "+1234567890",
+          phone: "1234567890",
           lookingFor: "Web Development",
           message: "This is a test message that is long enough",
         });
@@ -169,7 +229,7 @@ describe("ContactForm", () => {
       mockSubmitContactForm.mockRejectedValueOnce(new Error("API Error"));
 
       render(<ContactForm />);
-      const submitButton = screen.getByRole("button", { name: /submitcontactform/i });
+      const submitButton = screen.getByRole("button", { name: /submit contact form/i });
 
       await act(async () => {
         fillValidForm();
@@ -182,6 +242,26 @@ describe("ContactForm", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Something went wrong. Please try again.")).toBeInTheDocument();
+      });
+    });
+
+    it("disables button and shows sending state during submission", async () => {
+      mockSubmitContactForm.mockImplementationOnce(
+        () => new Promise((resolve) => setTimeout(resolve, 100))
+      );
+
+      render(<ContactForm />);
+      const submitButton = screen.getByRole("button", { name: /submit contact form/i });
+
+      await act(async () => {
+        fillValidForm();
+        fireEvent.click(submitButton);
+      });
+
+      // Button should be disabled and show "Sending..."
+      await waitFor(() => {
+        expect(screen.getByRole("button", { name: /sending message/i })).toBeDisabled();
+        expect(screen.getByText("Sending...")).toBeInTheDocument();
       });
     });
   });

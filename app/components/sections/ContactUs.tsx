@@ -21,7 +21,7 @@ const ContactUs = () => {
         transition: { duration: 0.8, ease: "easeOut" },
       }}
     >
-      <div className="mx-auto w-full max-w-full sm:max-w-8/10">
+      <div className="mx-auto w-full max-w-full sm:container">
         <div className={styles.contactContainer}>
           <div className={styles.leftBackground}>
             <div
