@@ -12,6 +12,6 @@ export const NAV_ITEMS = [
 export const ABOUT_ITEM = {
   id: "about",
   label: "About Us",
-  href: `#${ROUTES.contact}`,
+  href: `#`, // We don't have about us page/section, so keeping it blank
   selected: false,
 };

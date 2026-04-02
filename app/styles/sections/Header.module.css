@@ -25,9 +25,8 @@
 }
 
 .navLink {
-  color: var(--text-secondary);
   transition: color 0.2s;
-  border-radius: 999px;
+  border-radius: 9999px;
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -55,7 +54,6 @@
 
 .contactButton {
   background-color: var(--header-button-bg);
-  color: var(--text-primary);
   box-shadow: var(--header-contact-button-shadow);
   transition: background-color 0.2s;
   border-radius: 999px;
@@ -80,6 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .menuButton:hover {
@@ -104,7 +103,6 @@
 }
 
 .mobileNavLink {
-  color: var(--text-secondary);
   transition:
     background-color 0.2s,
     color 0.2s;
@@ -117,7 +115,6 @@
 
 .mobileNavLink:hover {
   background-color: var(--header-overlay-bg);
-  color: var(--text-primary);
 }
 
 .logo {
@@ -136,16 +133,32 @@
 .searchInput {
   width: 100%;
   background-color: var(--header-bg);
-  border: 1px solid;
+  border: 1px solid var(--header-border);
   border-radius: 0.75rem;
   outline: none;
   padding: 0.75rem 1rem;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 
-@media (max-width: 1440px) {
+.searchInput:focus {
+  border-color: var(--header-button-bg);
+}
+
+.desktopOnly {
+  display: flex;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 1439px) {
   .desktopOnly {
     display: none !important;
+  }
+
+  .mobileOnly {
+    display: flex !important;
   }
 }
 

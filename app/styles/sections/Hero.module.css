@@ -6,8 +6,7 @@
   --hero-title-gradient-end: #4380ff;
   --hero-subtitle-color: #cde8d7;
   --hero-stat-value-gradient: linear-gradient(to right, #3c6bfe, #9d84f2);
-  --hero-stat-bg: #ffffff08;
-  --hero-stat-border: #ffffff0d;
+  --hero-stat-label-color: rgba(255, 255, 255, 0.85);
 }
 
 .bgFlower {
@@ -48,7 +47,7 @@
 }
 
 .statLabel {
-  color: var(--hero-stat-label-color, rgba(255, 255, 255, 0.85));
+  color: var(--hero-stat-label-color);
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Stories from "@/app/components/sections/Stories";
 import { STORIES_CONTENT } from "@/app/mock/constants";
@@ -9,7 +8,7 @@ import { MockMotionWrapperProps } from "@/app/types/motionWrapper";
   - Rendering the cards with correct props
 */
 
-jest.mock("../../components/cards/StoryCard", () => {
+jest.mock("@/app/components/cards/StoryCard", () => {
   interface MockStoryCardProps {
     card: {
       title: string;
@@ -30,7 +29,7 @@ jest.mock("../../components/cards/StoryCard", () => {
   };
 });
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,

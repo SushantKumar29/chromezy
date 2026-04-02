@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import BrandStrip from "@/app/components/sections/BrandStrip";
 import { BRAND_LOGOS } from "@/app/mock/constants";

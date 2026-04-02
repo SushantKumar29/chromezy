@@ -20,10 +20,11 @@ const InsightCard = ({ insight, linkIcon }: InsightCardProps) => {
           <h3 className={styles.cardTitle}>{insight.title}</h3>
 
           <button
-            id="readMore"
-            name="Read more"
+            id={insight.id}
+            name={`Read: ${insight.title}`}
+            type="button"
             className={styles.arrowButton}
-            aria-label="readMore"
+            aria-label={insight.id}
           >
             <Image src={linkIcon} alt="Arrow Icon" width={35} height={35} />
           </button>

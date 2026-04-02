@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import BgOverlay from "./shared/ui/BgOverlay";
-import { LazyMotion, domAnimation } from "framer-motion";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -17,7 +16,7 @@ const inter = Inter({
 });
 
 // Metadata here because of the SEO reasons
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL! || "https://chromezy.com";
+const siteUrl = process.env.SITE_URL! || "https://chromezy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -69,15 +68,13 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" className="scroll-smooth">
       <body suppressHydrationWarning className={`${sora.variable} ${inter.variable} antialiased`}>
-        <LazyMotion features={domAnimation}>
-          <div className="relative min-h-screen w-full overflow-x-hidden text-primary">
-            <div className="pointer-events-none fixed inset-0 -z-20">
-              <BgOverlay />
-            </div>
-
-            {children}
+        <div className="relative min-h-screen w-full overflow-x-hidden text-primary">
+          <div className="pointer-events-none fixed inset-0 -z-20">
+            <BgOverlay />
           </div>
-        </LazyMotion>
+
+          {children}
+        </div>
       </body>
     </html>
   );

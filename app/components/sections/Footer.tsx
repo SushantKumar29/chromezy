@@ -6,13 +6,13 @@ import SocialLinks from "../links/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer id={ROUTES.footer} className="w-full bg-background px-4 py-12 md:py-20">
-      <div className="mx-auto w-full max-w-full sm:max-w-8/10">
+    <footer id={ROUTES.footer} className={styles.footer}>
+      <div className="mx-auto w-full max-w-full sm:container px-4 py-12 md:py-20">
         <div className={styles.divider} />
 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10">
           <div className="shrink-0 max-w-[320px]">
-            <div className="flex items-center gap-2.5 mb-4">
+            <div className="flex items-center mb-4">
               <Image
                 src={FOOTER_CONTENT.logo.src}
                 alt={FOOTER_CONTENT.logo.alt}
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-16 lg:gap-24">
-            <div className="flex flex-col gap-0 min-w-40">
+            <div className="flex flex-col gap-0">
               {FOOTER_NAV_LEFT.map((item, i) => (
                 <NavLink
                   key={item.id}
@@ -75,7 +75,7 @@ const Footer = () => {
               ))}
             </div>
 
-            <div className="flex flex-col gap-0 min-w-40">
+            <div className="flex flex-col gap-0">
               {FOOTER_NAV_RIGHT.map((item, i) => (
                 <NavLink
                   key={item.id}

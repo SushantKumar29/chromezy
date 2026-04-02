@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Technologies from "@/app/components/sections/Technologies";
 import { TECHNOLOGIES_CONTENT } from "@/app/mock/constants";
@@ -22,7 +21,7 @@ jest.mock("next/image", () => ({
   },
 }));
 
-jest.mock("../../components/cards/TechTag", () => {
+jest.mock("@/app/components/cards/TechTag", () => {
   return function MockTechTag({ label, icon }: Tag) {
     return (
       <div data-testid="tech-tag" data-icon={icon ? "has-icon" : "no-icon"}>
@@ -33,7 +32,7 @@ jest.mock("../../components/cards/TechTag", () => {
   };
 });
 
-jest.mock("../../components/wrappers/MotionWrapper", () => {
+jest.mock("@/app/components/wrappers/MotionWrapper", () => {
   return function MockMotionWrapper({
     children,
     className,

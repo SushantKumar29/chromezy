@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Header from "@/app/components/sections/Header";
 import { NavLinksProps } from "@/app/types";
@@ -12,7 +11,7 @@ import { NavLinksProps } from "@/app/types";
   - Rendering mobile navigation
 */
 
-jest.mock("../../components/links/NavLinks", () => {
+jest.mock("@/app/components/links/NavLinks", () => {
   const MockNavLinks = ({ variant, onItemClick }: NavLinksProps) => (
     <div data-testid={`nav-links-${variant}`}>
       <a href="/home" onClick={onItemClick}>
@@ -41,7 +40,8 @@ jest.mock("../../components/links/NavLinks", () => {
   };
 });
 
-jest.mock("../../shared/ui/Icons", () => ({
+// Mock all icons properly
+jest.mock("@/app/shared/ui/Icons", () => ({
   MenuIcon: ({ className }: { className: string }) => (
     <div data-testid="menu-icon" className={className}>
       Menu
@@ -52,14 +52,31 @@ jest.mock("../../shared/ui/Icons", () => ({
       Close
     </div>
   ),
+  ContactUsIcon: ({ className }: { className: string }) => (
+    <svg data-testid="contact-icon" className={className} />
+  ),
 }));
 
-jest.mock("../../styles/sections/Header.module.css", () => ({
+// Mock the CSS module
+jest.mock("@/app/styles/sections/Header.module.css", () => ({
+  header: "mock-header",
+  logo: "mock-logo",
+  desktopOnly: "mock-desktop-only",
+  mobileOnly: "mock-mobile-only",
+  navContainer: "mock-nav-container",
+  contactButton: "mock-contact-button",
+  menuButton: "mock-menu-button",
   mobileMenu: "mock-mobile-menu",
   mobileMenuOpen: "mock-mobile-menu-open",
+  searchContainer: "mock-search-container",
+  searchInput: "mock-search-input",
 }));
 
 describe("Header", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders logo and search icon", () => {
     render(<Header />);
 
@@ -147,5 +164,26 @@ describe("Header", () => {
     fireEvent.click(firstLink!);
 
     expect(mobileMenu).not.toHaveClass("mock-mobile-menu-open");
+  });
+
+  it("toggles search input when clicking search button", () => {
+    render(<Header />);
+
+    const searchButton = screen.getByRole("button", { name: /search/i });
+    expect(searchButton).toBeInTheDocument();
+
+    // Initially search should not be visible
+    expect(screen.queryByPlaceholderText("Search...")).not.toBeInTheDocument();
+
+    // Click to open search
+    fireEvent.click(searchButton);
+    expect(screen.getByPlaceholderText("Search...")).toBeInTheDocument();
+
+    // Click overlay to close
+    const overlay = document.querySelector(".fixed.inset-0");
+    if (overlay) {
+      fireEvent.click(overlay);
+      expect(screen.queryByPlaceholderText("Search...")).not.toBeInTheDocument();
+    }
   });
 });
